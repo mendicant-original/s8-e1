@@ -18,7 +18,7 @@ module GMP
     end
 
     def fits_long?
-      Lib.__gmpz_fits_slong_p(@ptr) != 0
+      Lib.__gmpz_fits_slong_p(@ptr) == 1
     end
 
     def == other
