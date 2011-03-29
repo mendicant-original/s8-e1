@@ -21,12 +21,14 @@ module GMP
     attach_function :__gmp_printf, [:string, :varargs], :int
     attach_function :__gmpz_get_str, [:string, :int, :pointer], :string
 
-    def method_missing(meth, *args, &block)
-      if meth.to_s.start_with? '__gmp'
-        GMP::Lib.attach_function meth, [:pointer, :pointer, :pointer], :void
-        send(meth, *args, &block)
-      else
-        super
+    class << self
+      def method_missing(meth, *args, &block)
+        if meth.to_s.start_with? '__gmp'
+          attach_function meth, [:pointer, :pointer, :pointer], :void
+          send(meth, *args, &block)
+        else
+          super
+        end
       end
     end
   end
