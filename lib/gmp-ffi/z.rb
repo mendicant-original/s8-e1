@@ -20,6 +20,12 @@ module GMP
     def + other
       new { |r|
         case other
+        when Fixnum
+          if other >= 0
+            Lib.__gmpz_add_ui(r.ptr, @ptr, other)
+          else
+            Lib.__gmpz_sub_ui(r.ptr, @ptr, -other)
+          end
         when Z
           Lib.__gmpz_add(r.ptr, @ptr, other.ptr)
         end

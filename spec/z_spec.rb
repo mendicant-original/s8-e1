@@ -9,6 +9,8 @@ describe Z do
   it '+' do
     a, b = Z.new(2), Z.new(3)
     (a+b).get_str.should == '5'
+
+    (a+3).get_str.should == '5'
   end
 
   it '*' do
