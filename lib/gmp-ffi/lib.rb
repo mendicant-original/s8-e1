@@ -1,4 +1,6 @@
 require 'ffi'
+require 'psych'
+require 'yaml'
 
 =begin
 in gmp.h:909
@@ -13,18 +15,13 @@ module GMP
     extend FFI::Library
     ffi_lib 'gmp'
 
-    attach_function :__gmpz_init, [:pointer], :void
-    attach_function :__gmpz_init_set_si, [:pointer, :long], :void
-
-    attach_function :__gmpz_mul_si, [:pointer, :pointer, :long], :void
-
-    attach_function :__gmp_printf, [:string, :varargs], :int
-    attach_function :__gmpz_get_str, [:string, :int, :pointer], :string
+    FunctionsFile = File.expand_path('../../../ffi/functions.yml', __FILE__)
+    Functions = YAML.load_file FunctionsFile
 
     class << self
       def method_missing(meth, *args, &block)
-        if meth.to_s.start_with? '__gmp'
-          attach_function meth, [:pointer, :pointer, :pointer], :void
+        if meth.to_s.start_with? '__gmp' and Functions.key? meth
+          attach_function meth, *Functions[meth]
           send(meth, *args, &block)
         else
           super

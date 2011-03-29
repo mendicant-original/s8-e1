@@ -1,0 +1,958 @@
+---
+:__gmp_randinit:
+- - :pointer
+  - :pointer
+  - :varargs
+- :void
+:__gmp_randinit_default:
+- - :pointer
+- :void
+:__gmp_randinit_mt:
+- - :pointer
+- :void
+:__gmp_randinit_set:
+- - :pointer
+  - :pointer
+- :void
+:__gmp_randseed:
+- - :pointer
+  - :pointer
+- :void
+:__gmp_randseed_ui:
+- - :pointer
+  - :ulong
+- :void
+:__gmp_randclear:
+- - :pointer
+- :void
+:__gmp_urandomb_ui:
+- - :pointer
+  - :ulong
+- :ulong
+:__gmp_urandomm_ui:
+- - :pointer
+  - :ulong
+- :ulong
+:__gmp_asprintf:
+- - :pointer
+  - :string
+  - :varargs
+- :int
+:__gmp_printf:
+- - :string
+  - :varargs
+- :int
+:__gmp_snprintf:
+- - :string
+  - :ulong
+  - :string
+  - :varargs
+- :int
+:__gmp_sprintf:
+- - :string
+  - :string
+  - :varargs
+- :int
+:__gmp_scanf:
+- - :string
+  - :varargs
+- :int
+:__gmp_sscanf:
+- - :string
+  - :string
+  - :varargs
+- :int
+:__gmpz_realloc:
+- - :pointer
+  - :long
+- :pointer
+:__gmpz_abs:
+- - :pointer
+  - :pointer
+- :void
+:__gmpz_add:
+- - :pointer
+  - :pointer
+  - :pointer
+- :void
+:__gmpz_add_ui:
+- - :pointer
+  - :pointer
+  - :ulong
+- :void
+:__gmpz_addmul:
+- - :pointer
+  - :pointer
+  - :pointer
+- :void
+:__gmpz_addmul_ui:
+- - :pointer
+  - :pointer
+  - :ulong
+- :void
+:__gmpz_and:
+- - :pointer
+  - :pointer
+  - :pointer
+- :void
+:__gmpz_array_init:
+- - :pointer
+  - :long
+  - :long
+- :void
+:__gmpz_bin_ui:
+- - :pointer
+  - :pointer
+  - :ulong
+- :void
+:__gmpz_bin_uiui:
+- - :pointer
+  - :ulong
+  - :ulong
+- :void
+:__gmpz_cdiv_q:
+- - :pointer
+  - :pointer
+  - :pointer
+- :void
+:__gmpz_cdiv_q_ui:
+- - :pointer
+  - :pointer
+  - :ulong
+- :ulong
+:__gmpz_cdiv_qr:
+- - :pointer
+  - :pointer
+  - :pointer
+  - :pointer
+- :void
+:__gmpz_cdiv_qr_ui:
+- - :pointer
+  - :pointer
+  - :pointer
+  - :ulong
+- :ulong
+:__gmpz_cdiv_r:
+- - :pointer
+  - :pointer
+  - :pointer
+- :void
+:__gmpz_cdiv_r_ui:
+- - :pointer
+  - :pointer
+  - :ulong
+- :ulong
+:__gmpz_clear:
+- - :pointer
+- :void
+:__gmpz_clears:
+- - :pointer
+  - :varargs
+- :void
+:__gmpz_clrbit:
+- - :pointer
+  - :ulong
+- :void
+:__gmpz_com:
+- - :pointer
+  - :pointer
+- :void
+:__gmpz_combit:
+- - :pointer
+  - :ulong
+- :void
+:__gmpz_divexact:
+- - :pointer
+  - :pointer
+  - :pointer
+- :void
+:__gmpz_divexact_ui:
+- - :pointer
+  - :pointer
+  - :ulong
+- :void
+:__gmpz_dump:
+- - :pointer
+- :void
+:__gmpz_export:
+- - :pointer
+  - :pointer
+  - :int
+  - :ulong
+  - :int
+  - :ulong
+  - :pointer
+- :pointer
+:__gmpz_fac_ui:
+- - :pointer
+  - :ulong
+- :void
+:__gmpz_fdiv_q:
+- - :pointer
+  - :pointer
+  - :pointer
+- :void
+:__gmpz_fdiv_q_ui:
+- - :pointer
+  - :pointer
+  - :ulong
+- :ulong
+:__gmpz_fdiv_qr:
+- - :pointer
+  - :pointer
+  - :pointer
+  - :pointer
+- :void
+:__gmpz_fdiv_qr_ui:
+- - :pointer
+  - :pointer
+  - :pointer
+  - :ulong
+- :ulong
+:__gmpz_fdiv_r:
+- - :pointer
+  - :pointer
+  - :pointer
+- :void
+:__gmpz_fdiv_r_ui:
+- - :pointer
+  - :pointer
+  - :ulong
+- :ulong
+:__gmpz_fib_ui:
+- - :pointer
+  - :ulong
+- :void
+:__gmpz_gcd:
+- - :pointer
+  - :pointer
+  - :pointer
+- :void
+:__gmpz_gcd_ui:
+- - :pointer
+  - :pointer
+  - :ulong
+- :ulong
+:__gmpz_gcdext:
+- - :pointer
+  - :pointer
+  - :pointer
+  - :pointer
+  - :pointer
+- :void
+:__gmpz_get_str:
+- - :string
+  - :int
+  - :pointer
+- :string
+:__gmpz_import:
+- - :pointer
+  - :ulong
+  - :int
+  - :ulong
+  - :int
+  - :ulong
+  - :pointer
+- :void
+:__gmpz_init:
+- - :pointer
+- :void
+:__gmpz_inits:
+- - :pointer
+  - :varargs
+- :void
+:__gmpz_init_set:
+- - :pointer
+  - :pointer
+- :void
+:__gmpz_init_set_d:
+- - :pointer
+  - :double
+- :void
+:__gmpz_init_set_si:
+- - :pointer
+  - :long
+- :void
+:__gmpz_init_set_str:
+- - :pointer
+  - :string
+  - :int
+- :int
+:__gmpz_init_set_ui:
+- - :pointer
+  - :ulong
+- :void
+:__gmpz_invert:
+- - :pointer
+  - :pointer
+  - :pointer
+- :int
+:__gmpz_ior:
+- - :pointer
+  - :pointer
+  - :pointer
+- :void
+:__gmpz_lcm:
+- - :pointer
+  - :pointer
+  - :pointer
+- :void
+:__gmpz_lcm_ui:
+- - :pointer
+  - :pointer
+  - :ulong
+- :void
+:__gmpz_lucnum_ui:
+- - :pointer
+  - :ulong
+- :void
+:__gmpz_mod:
+- - :pointer
+  - :pointer
+  - :pointer
+- :void
+:__gmpz_mul:
+- - :pointer
+  - :pointer
+  - :pointer
+- :void
+:__gmpz_mul_si:
+- - :pointer
+  - :pointer
+  - :long
+- :void
+:__gmpz_mul_ui:
+- - :pointer
+  - :pointer
+  - :ulong
+- :void
+:__gmpz_neg:
+- - :pointer
+  - :pointer
+- :void
+:__gmpz_nextprime:
+- - :pointer
+  - :pointer
+- :void
+:__gmpz_pow_ui:
+- - :pointer
+  - :pointer
+  - :ulong
+- :void
+:__gmpz_powm:
+- - :pointer
+  - :pointer
+  - :pointer
+  - :pointer
+- :void
+:__gmpz_powm_sec:
+- - :pointer
+  - :pointer
+  - :pointer
+  - :pointer
+- :void
+:__gmpz_powm_ui:
+- - :pointer
+  - :pointer
+  - :ulong
+  - :pointer
+- :void
+:__gmpz_random:
+- - :pointer
+  - :long
+- :void
+:__gmpz_remove:
+- - :pointer
+  - :pointer
+  - :pointer
+- :ulong
+:__gmpz_root:
+- - :pointer
+  - :pointer
+  - :ulong
+- :int
+:__gmpz_rootrem:
+- - :pointer
+  - :pointer
+  - :pointer
+  - :ulong
+- :void
+:__gmpz_rrandomb:
+- - :pointer
+  - :pointer
+  - :ulong
+- :void
+:__gmpz_set:
+- - :pointer
+  - :pointer
+- :void
+:__gmpz_set_d:
+- - :pointer
+  - :double
+- :void
+:__gmpz_set_f:
+- - :pointer
+  - :pointer
+- :void
+:__gmpz_set_q:
+- - :pointer
+  - :pointer
+- :void
+:__gmpz_set_si:
+- - :pointer
+  - :long
+- :void
+:__gmpz_set_str:
+- - :pointer
+  - :string
+  - :int
+- :int
+:__gmpz_set_ui:
+- - :pointer
+  - :ulong
+- :void
+:__gmpz_setbit:
+- - :pointer
+  - :ulong
+- :void
+:__gmpz_sqrt:
+- - :pointer
+  - :pointer
+- :void
+:__gmpz_sqrtrem:
+- - :pointer
+  - :pointer
+  - :pointer
+- :void
+:__gmpz_sub:
+- - :pointer
+  - :pointer
+  - :pointer
+- :void
+:__gmpz_sub_ui:
+- - :pointer
+  - :pointer
+  - :ulong
+- :void
+:__gmpz_ui_sub:
+- - :pointer
+  - :ulong
+  - :pointer
+- :void
+:__gmpz_submul:
+- - :pointer
+  - :pointer
+  - :pointer
+- :void
+:__gmpz_submul_ui:
+- - :pointer
+  - :pointer
+  - :ulong
+- :void
+:__gmpz_tdiv_q:
+- - :pointer
+  - :pointer
+  - :pointer
+- :void
+:__gmpz_tdiv_q_ui:
+- - :pointer
+  - :pointer
+  - :ulong
+- :ulong
+:__gmpz_tdiv_qr:
+- - :pointer
+  - :pointer
+  - :pointer
+  - :pointer
+- :void
+:__gmpz_tdiv_qr_ui:
+- - :pointer
+  - :pointer
+  - :pointer
+  - :ulong
+- :ulong
+:__gmpz_tdiv_r:
+- - :pointer
+  - :pointer
+  - :pointer
+- :void
+:__gmpz_tdiv_r_ui:
+- - :pointer
+  - :pointer
+  - :ulong
+- :ulong
+:__gmpz_ui_pow_ui:
+- - :pointer
+  - :ulong
+  - :ulong
+- :void
+:__gmpz_urandomb:
+- - :pointer
+  - :pointer
+  - :ulong
+- :void
+:__gmpz_urandomm:
+- - :pointer
+  - :pointer
+  - :pointer
+- :void
+:__gmpz_xor:
+- - :pointer
+  - :pointer
+  - :pointer
+- :void
+:__gmpq_abs:
+- - :pointer
+  - :pointer
+- :void
+:__gmpq_add:
+- - :pointer
+  - :pointer
+  - :pointer
+- :void
+:__gmpq_canonicalize:
+- - :pointer
+- :void
+:__gmpq_clear:
+- - :pointer
+- :void
+:__gmpq_clears:
+- - :pointer
+  - :varargs
+- :void
+:__gmpq_div:
+- - :pointer
+  - :pointer
+  - :pointer
+- :void
+:__gmpq_get_num:
+- - :pointer
+  - :pointer
+- :void
+:__gmpq_get_den:
+- - :pointer
+  - :pointer
+- :void
+:__gmpq_get_str:
+- - :string
+  - :int
+  - :pointer
+- :string
+:__gmpq_init:
+- - :pointer
+- :void
+:__gmpq_inits:
+- - :pointer
+  - :varargs
+- :void
+:__gmpq_inv:
+- - :pointer
+  - :pointer
+- :void
+:__gmpq_mul:
+- - :pointer
+  - :pointer
+  - :pointer
+- :void
+:__gmpq_neg:
+- - :pointer
+  - :pointer
+- :void
+:__gmpq_set:
+- - :pointer
+  - :pointer
+- :void
+:__gmpq_set_d:
+- - :pointer
+  - :double
+- :void
+:__gmpq_set_den:
+- - :pointer
+  - :pointer
+- :void
+:__gmpq_set_f:
+- - :pointer
+  - :pointer
+- :void
+:__gmpq_set_num:
+- - :pointer
+  - :pointer
+- :void
+:__gmpq_set_si:
+- - :pointer
+  - :long
+  - :ulong
+- :void
+:__gmpq_set_str:
+- - :pointer
+  - :string
+  - :int
+- :int
+:__gmpq_set_ui:
+- - :pointer
+  - :ulong
+  - :ulong
+- :void
+:__gmpq_set_z:
+- - :pointer
+  - :pointer
+- :void
+:__gmpq_sub:
+- - :pointer
+  - :pointer
+  - :pointer
+- :void
+:__gmpf_abs:
+- - :pointer
+  - :pointer
+- :void
+:__gmpf_add:
+- - :pointer
+  - :pointer
+  - :pointer
+- :void
+:__gmpf_add_ui:
+- - :pointer
+  - :pointer
+  - :ulong
+- :void
+:__gmpf_ceil:
+- - :pointer
+  - :pointer
+- :void
+:__gmpf_clear:
+- - :pointer
+- :void
+:__gmpf_clears:
+- - :pointer
+  - :varargs
+- :void
+:__gmpf_div:
+- - :pointer
+  - :pointer
+  - :pointer
+- :void
+:__gmpf_div_ui:
+- - :pointer
+  - :pointer
+  - :ulong
+- :void
+:__gmpf_dump:
+- - :pointer
+- :void
+:__gmpf_floor:
+- - :pointer
+  - :pointer
+- :void
+:__gmpf_get_str:
+- - :string
+  - :pointer
+  - :int
+  - :ulong
+  - :pointer
+- :string
+:__gmpf_init:
+- - :pointer
+- :void
+:__gmpf_inits:
+- - :pointer
+  - :varargs
+- :void
+:__gmpf_init_set:
+- - :pointer
+  - :pointer
+- :void
+:__gmpf_init_set_d:
+- - :pointer
+  - :double
+- :void
+:__gmpf_init_set_si:
+- - :pointer
+  - :long
+- :void
+:__gmpf_init_set_str:
+- - :pointer
+  - :string
+  - :int
+- :int
+:__gmpf_init_set_ui:
+- - :pointer
+  - :ulong
+- :void
+:__gmpf_mul:
+- - :pointer
+  - :pointer
+  - :pointer
+- :void
+:__gmpf_mul_ui:
+- - :pointer
+  - :pointer
+  - :ulong
+- :void
+:__gmpf_neg:
+- - :pointer
+  - :pointer
+- :void
+:__gmpf_pow_ui:
+- - :pointer
+  - :pointer
+  - :ulong
+- :void
+:__gmpf_reldiff:
+- - :pointer
+  - :pointer
+  - :pointer
+- :void
+:__gmpf_set:
+- - :pointer
+  - :pointer
+- :void
+:__gmpf_set_d:
+- - :pointer
+  - :double
+- :void
+:__gmpf_set_prec:
+- - :pointer
+  - :ulong
+- :void
+:__gmpf_set_q:
+- - :pointer
+  - :pointer
+- :void
+:__gmpf_set_si:
+- - :pointer
+  - :long
+- :void
+:__gmpf_set_str:
+- - :pointer
+  - :string
+  - :int
+- :int
+:__gmpf_set_ui:
+- - :pointer
+  - :ulong
+- :void
+:__gmpf_set_z:
+- - :pointer
+  - :pointer
+- :void
+:__gmpf_sqrt:
+- - :pointer
+  - :pointer
+- :void
+:__gmpf_sqrt_ui:
+- - :pointer
+  - :ulong
+- :void
+:__gmpf_sub:
+- - :pointer
+  - :pointer
+  - :pointer
+- :void
+:__gmpf_sub_ui:
+- - :pointer
+  - :pointer
+  - :ulong
+- :void
+:__gmpf_trunc:
+- - :pointer
+  - :pointer
+- :void
+:__gmpf_ui_div:
+- - :pointer
+  - :ulong
+  - :pointer
+- :void
+:__gmpf_ui_sub:
+- - :pointer
+  - :ulong
+  - :pointer
+- :void
+:__gmpf_urandomb:
+- - :pointer
+  - :pointer
+  - :ulong
+- :void
+:__gmpn_add:
+- - :pointer
+  - :pointer
+  - :long
+  - :pointer
+  - :long
+- :ulong
+:__gmpn_add_n:
+- - :pointer
+  - :pointer
+  - :pointer
+  - :long
+- :ulong
+:__gmpn_divrem:
+- - :pointer
+  - :long
+  - :pointer
+  - :long
+  - :pointer
+  - :long
+- :ulong
+:__gmpn_gcd:
+- - :pointer
+  - :pointer
+  - :long
+  - :pointer
+  - :long
+- :long
+:__gmpn_gcdext:
+- - :pointer
+  - :pointer
+  - :pointer
+  - :pointer
+  - :long
+  - :pointer
+  - :long
+- :long
+:__gmpn_get_str:
+- - :pointer
+  - :int
+  - :pointer
+  - :long
+- :ulong
+:__gmpn_lshift:
+- - :pointer
+  - :pointer
+  - :long
+  - :uint
+- :ulong
+:__gmpn_mul:
+- - :pointer
+  - :pointer
+  - :long
+  - :pointer
+  - :long
+- :ulong
+:__gmpn_mul_n:
+- - :pointer
+  - :pointer
+  - :pointer
+  - :long
+- :void
+:__gmpn_sqr:
+- - :pointer
+  - :pointer
+  - :long
+- :void
+:__gmpn_neg:
+- - :pointer
+  - :pointer
+  - :long
+- :ulong
+:__gmpn_com:
+- - :pointer
+  - :pointer
+  - :long
+- :void
+:__gmpn_random:
+- - :pointer
+  - :long
+- :void
+:__gmpn_rshift:
+- - :pointer
+  - :pointer
+  - :long
+  - :uint
+- :ulong
+:__gmpn_set_str:
+- - :pointer
+  - :pointer
+  - :ulong
+  - :int
+- :long
+:__gmpn_sqrtrem:
+- - :pointer
+  - :pointer
+  - :pointer
+  - :long
+- :long
+:__gmpn_sub:
+- - :pointer
+  - :pointer
+  - :long
+  - :pointer
+  - :long
+- :ulong
+:__gmpn_sub_n:
+- - :pointer
+  - :pointer
+  - :pointer
+  - :long
+- :ulong
+:__gmpn_tdiv_qr:
+- - :pointer
+  - :pointer
+  - :long
+  - :pointer
+  - :long
+  - :pointer
+  - :long
+- :void
+:__gmpn_and_n:
+- - :pointer
+  - :pointer
+  - :pointer
+  - :long
+- :void
+:__gmpn_andn_n:
+- - :pointer
+  - :pointer
+  - :pointer
+  - :long
+- :void
+:__gmpn_nand_n:
+- - :pointer
+  - :pointer
+  - :pointer
+  - :long
+- :void
+:__gmpn_ior_n:
+- - :pointer
+  - :pointer
+  - :pointer
+  - :long
+- :void
+:__gmpn_iorn_n:
+- - :pointer
+  - :pointer
+  - :pointer
+  - :long
+- :void
+:__gmpn_nior_n:
+- - :pointer
+  - :pointer
+  - :pointer
+  - :long
+- :void
+:__gmpn_xor_n:
+- - :pointer
+  - :pointer
+  - :pointer
+  - :long
+- :void
+:__gmpn_xnor_n:
+- - :pointer
+  - :pointer
+  - :pointer
+  - :long
+- :void
+:__gmpn_copyi:
+- - :pointer
+  - :pointer
+  - :long
+- :void
+:__gmpn_copyd:
+- - :pointer
+  - :pointer
+  - :long
+- :void
+:__gmpn_zero:
+- - :pointer
+  - :long
+- :void
