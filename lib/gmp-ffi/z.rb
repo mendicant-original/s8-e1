@@ -54,11 +54,7 @@ module GMP
       }
     end
 
-    def show
-      Lib.__gmp_printf("%Zd\n", :pointer, @ptr)
-    end
-
-    def get_str
+    def to_s
       Lib.__gmpz_get_str(nil, 10, @ptr)
     end
   end
