@@ -17,6 +17,17 @@ module GMP
       Z.new.tap { |z| yield(z) }
     end
 
+    def fits_long?
+      Lib.__gmpz_fits_slong_p(@ptr) != 0
+    end
+
+    def == other
+      case other
+      when Fixnum
+        fits_long? and Lib.__gmpz_get_si(@ptr) == other
+      end
+    end
+
     def + other
       new { |r|
         case other

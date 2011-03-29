@@ -34,7 +34,9 @@ PROTOTYPE_REGEXP = /^
       (?:#{PARAM_SEPARATOR}#{PARAM})* # other params
       \s*
     )
-  \);
+  \)
+  (?:[ ]__attribute__[ ]\(\(__pure__\)\))?
+  ;
 $/x
 
 TYPES_MAP = {
