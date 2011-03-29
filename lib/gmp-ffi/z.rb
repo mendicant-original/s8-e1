@@ -19,6 +19,15 @@ module GMP
       Z.new.tap { |z| yield(z) }
     end
 
+    def + other
+      new { |r|
+        case other
+        when Z
+          __gmpz_add(r.ptr, @ptr, other.ptr)
+        end
+      }
+    end
+
     def * other
       new { |r|
         case other
