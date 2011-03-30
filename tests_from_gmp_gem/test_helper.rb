@@ -1,5 +1,5 @@
 require 'test/unit'
-require './test_unit/assertions'  # Monkey patch
 require 'rbconfig'
 
+require_relative 'test_unit/assertions' # Monkey patch
 require_relative '../lib/gmp-ffi'
