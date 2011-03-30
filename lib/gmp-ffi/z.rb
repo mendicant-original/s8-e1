@@ -7,6 +7,8 @@ module GMP
       @ptr = FFI::MemoryPointer.new(:pointer) # should be a pointer to __mpz_struct
       Lib.z_init(@ptr)
       case n
+      when Z
+        Lib.z_set(@ptr, n.ptr)
       when Fixnum
         Lib.z_set_si(@ptr, n)
       when String
@@ -24,6 +26,8 @@ module GMP
 
     def == other
       case other
+      when Z
+        Lib.z_cmp(@ptr, other.ptr) == 0
       when Fixnum
         fits_long? and Lib.z_get_si(@ptr) == other
       end
