@@ -2,6 +2,8 @@ require_relative 'lib'
 
 module GMP
   class Z
+    include Comparable
+
     attr_reader :ptr
     def initialize(n = nil)
       @ptr = FFI::MemoryPointer.new(:pointer) # should be a pointer to __mpz_struct
@@ -30,6 +32,13 @@ module GMP
         Lib.z_cmp(@ptr, other.ptr) == 0
       when Fixnum
         fits_long? and Lib.z_get_si(@ptr) == other
+      end
+    end
+
+    def <=> other
+      case other
+      when Z
+        sign Lib.z_cmp(@ptr, other.ptr)
       end
     end
 
@@ -78,6 +87,11 @@ module GMP
       when Fixnum
         Lib.z_divisible_ui?(@ptr, by.abs)
       end
+    end
+
+    private
+    def sign i
+      i == 0 ? 0 : i > 0 ? 1 : -1
     end
   end
 end
