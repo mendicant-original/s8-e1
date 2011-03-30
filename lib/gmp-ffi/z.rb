@@ -62,5 +62,22 @@ module GMP
     def to_s
       Lib.z_get_str(nil, 10, @ptr)
     end
+
+    def hash
+      Lib.z_get_si(@ptr).hash # FIXME
+    end
+
+    def eql? other
+      Z === other and self == other
+    end
+
+    def divisible? by
+      case by
+      when Z
+        Lib.z_divisible_p(@ptr, by.ptr) == 1
+      when Fixnum
+        Lib.z_divisible_ui_p(@ptr, by.abs) == 1
+      end
+    end
   end
 end
