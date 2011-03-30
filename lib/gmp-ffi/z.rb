@@ -21,7 +21,7 @@ module GMP
     end
 
     def fits_long?
-      Lib.z_fits_slong_p(@ptr) == 1
+      Lib.z_fits_slong?(@ptr)
     end
 
     def == other
@@ -74,9 +74,9 @@ module GMP
     def divisible? by
       case by
       when Z
-        Lib.z_divisible_p(@ptr, by.ptr) == 1
+        Lib.z_divisible?(@ptr, by.ptr)
       when Fixnum
-        Lib.z_divisible_ui_p(@ptr, by.abs) == 1
+        Lib.z_divisible_ui?(@ptr, by.abs)
       end
     end
   end

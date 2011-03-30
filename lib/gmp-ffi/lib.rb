@@ -20,13 +20,17 @@ module GMP
 
     class << self
       def method_missing(meth, *args, &block)
-        function = :"__gmp#{meth}"
-        if Functions.key? function
+        if meth[-1] == '?' # predicate
+          fun = meth[0...-1] << '_p'
+          define_singleton_method(meth) do |*args|
+            send(fun, *args) == 1
+          end
+        elsif Functions.key?(function = :"__gmp#{meth}")
           attach_function meth, function, *Functions[function]
-          send(meth, *args, &block)
         else
           super
         end
+        send(meth, *args, &block)
       end
     end
   end
