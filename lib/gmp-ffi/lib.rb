@@ -20,8 +20,9 @@ module GMP
 
     class << self
       def method_missing(meth, *args, &block)
-        if meth.to_s.start_with? '__gmp' and Functions.key? meth
-          attach_function meth, *Functions[meth]
+        function = :"__gmp#{meth}"
+        if Functions.key? function
+          attach_function meth, function, *Functions[function]
           send(meth, *args, &block)
         else
           super
