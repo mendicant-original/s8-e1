@@ -13,6 +13,8 @@ module GMP
         Lib.z_set(@ptr, n.ptr)
       when Fixnum
         Lib.z_set_si(@ptr, n)
+      when Bignum
+        Lib.z_set_str(@ptr, n.to_s, 0) # FIXME
       when String
         Lib.z_set_str(@ptr, n, 0)
       end
@@ -86,6 +88,8 @@ module GMP
         Lib.z_divisible?(@ptr, by.ptr)
       when Fixnum
         Lib.z_divisible_ui?(@ptr, by.abs)
+      when Bignum
+        divisible? Z.new(by)
       end
     end
 
