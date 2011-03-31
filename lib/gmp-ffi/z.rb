@@ -59,6 +59,21 @@ module GMP
       }
     end
 
+    def - other
+      new { |r|
+        case other
+        when Fixnum
+          if other >= 0
+            Lib.z_sub_ui(r.ptr, @ptr, other)
+          else
+            Lib.z_add_ui(r.ptr, @ptr, -other)
+          end
+        when Z
+          Lib.z_sub(r.ptr, @ptr, other.ptr)
+        end
+      }
+    end
+
     def * other
       new { |r|
         case other
@@ -68,6 +83,10 @@ module GMP
           Lib.z_mul(r.ptr, @ptr, other.ptr)
         end
       }
+    end
+
+    def coerce other
+      [Z.new(other), self]
     end
 
     def to_s
