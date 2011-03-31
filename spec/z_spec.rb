@@ -1,22 +1,25 @@
 require_relative 'spec_helper'
 
 describe Z do
+  let(:two) { Z.new 2 }
+  let(:three) { Z.new 3 }
+
   it '#initialize' do
     Z.new.should == 0
-    Z.new(2).should == 2
+    two.should == 2
   end
 
   it '+' do
-    a, b = Z.new(2), Z.new(3)
-    (a+b).should == 5
+    (two+three).should == 5
+    (two-three).should == -1
 
-    (a+3).should == 5
+    (two+3).should == 5
+    (two-3).should == -1
   end
 
   it '*' do
-    a, b = Z.new(2), Z.new(3)
-    (a*b).should == 6
+    (two*three).should == 6
 
-    (a*3).should == 6
+    (two*3).should == 6
   end
 end
