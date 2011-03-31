@@ -8,6 +8,7 @@ describe 'generate' do
     :__gmpz_mul_si        => [[:pointer, :pointer, :long], :void],
     :__gmp_printf         => [[:string, :varargs], :int],
     :__gmpz_get_str       => [[:string, :int, :pointer], :string],
+    :__gmpz_set_str       => [[:pointer, :string, :int], :int],
     :__gmpz_fits_slong_p  => [[:pointer], :int],
     :__gmpz_get_si        => [[:pointer], :long],
   }
