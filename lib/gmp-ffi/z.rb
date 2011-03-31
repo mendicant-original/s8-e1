@@ -34,6 +34,8 @@ module GMP
         Lib.z_cmp(@ptr, other.ptr) == 0
       when Fixnum
         fits_long? and Lib.z_get_si(@ptr) == other
+      when Bignum
+        !fits_long? and to_i == other
       end
     end
 
@@ -97,6 +99,14 @@ module GMP
       [Z.new(other), self]
     end
 
+    def to_i
+      if fits_long?
+        Lib.z_get_si(@ptr)
+      else
+        to_s.to_i # FIXME
+      end
+    end
+
     def to_s
       Lib.z_get_str(nil, 10, @ptr)
     end
@@ -118,6 +128,10 @@ module GMP
       when Bignum
         divisible? Z.new(by)
       end
+    end
+
+    def !
+      new { |z| Lib.z_fac_ui(z.ptr, to_i) }
     end
 
     private
