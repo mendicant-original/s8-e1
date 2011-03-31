@@ -26,7 +26,8 @@ module GMP
             send(fun, *args) == 1
           end
         elsif Functions.key?(function = :"__gmp#{meth}")
-          attach_function meth, function, *Functions[function]
+          params, type = Functions[function]
+          attach_function meth, function, params.dup, type
         else
           super
         end
