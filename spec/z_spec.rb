@@ -1,8 +1,8 @@
 require_relative 'spec_helper'
 
 describe Z do
-  let(:two) { Z.new 2 }
-  let(:three) { Z.new 3 }
+  two = Z.new 2
+  three = Z.new 3
 
   it '#initialize' do
     Z.new.should == 0
