@@ -9,6 +9,16 @@ describe Z do
     two.should == 2
   end
 
+  it '==' do
+    two.should == 2
+    2.should == two
+    two.should == two
+
+    two.should_not == 3
+    3.should_not == 2
+    two.should_not == three
+  end
+
   it '+@' do
     (+two).should == two
     (+two).should == 2
