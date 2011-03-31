@@ -44,6 +44,14 @@ module GMP
       end
     end
 
+    def +@
+      self
+    end
+
+    def -@
+      new { |z| Lib.z_neg(z.ptr, @ptr) }
+    end
+
     def + other
       new { |r|
         case other
