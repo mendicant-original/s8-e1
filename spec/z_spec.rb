@@ -4,7 +4,7 @@ describe Z do
   two = Z.new 2
   three = Z.new 3
 
-  it '#initialize' do
+  it 'initialize' do
     Z.new.should == 0
     two.should == 2
   end
@@ -52,5 +52,10 @@ describe Z do
     three.!.should == 6
     Z(6).!.should == 720
     Z(30).!.should == 265252859812191058636308480000000
+  end
+
+  it 'to_s' do
+    two.to_s.should == '2'
+    Z(12345678909876543210).to_s.should == '12345678909876543210'
   end
 end
