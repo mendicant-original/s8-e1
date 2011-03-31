@@ -1,8 +1,7 @@
 module GMP
-  class << self
-    def Z(*args)
-      Z.new(*args)
-    end
+  extend self
+  def Z(*args)
+    Z.new(*args)
   end
 end
 
