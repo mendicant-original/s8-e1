@@ -1,1 +1,6 @@
+*.bundle
+*.o
+Makefile
+mkmf.log
+/ext/test.rb
 /ffi/gmp.preprocessed.h
