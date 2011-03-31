@@ -37,12 +37,17 @@ describe Z do
 
     (two+3).should == 5
     (two-3).should == -1
+
+    (3-two).should == 1
+    (2-three).should == -1
   end
 
   it '*' do
     (two*three).should == 6
 
     (two*3).should == 6
+
+    (2*three).should == 6
   end
 
   it '!' do
