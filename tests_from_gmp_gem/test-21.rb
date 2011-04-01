@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'gmp'
+require_relative 'test_helper'
 
 pi = GMP::F.new(1).asin * 2
 

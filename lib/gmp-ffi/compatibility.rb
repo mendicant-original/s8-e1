@@ -4,8 +4,10 @@ require_relative 'z'
 
 module GMP
   class Z
+    alias :nextprime :next_prime
     class << self
       alias :fac :factorial
+      alias :fib :fibonacci
     end
   end
 end

@@ -5,7 +5,7 @@ module GMP
     include Comparable
 
     attr_reader :ptr
-    def initialize(n = 0)
+    def initialize(n = nil)
       @ptr = FFI::MemoryPointer.new(:pointer) # should be a pointer to __mpz_struct
       Lib.z_init(@ptr)
       case n
@@ -128,6 +128,10 @@ module GMP
       end
     end
 
+    def next_prime
+      new { |z| Lib.z_nextprime(z.ptr, @ptr) }
+    end
+
     private
     def sign i
       i == 0 ? 0 : i > 0 ? 1 : -1
@@ -153,7 +157,11 @@ module GMP
 
     class << self
       def factorial(n)
-        Z.new.tap { |z| Lib.z_fac_ui(z.ptr, n) }
+        Z.new.tap { |z| Lib.z_fac_ui(z.ptr, n.to_i) }
+      end
+
+      def fibonacci(n)
+        Z.new.tap { |z| Lib.z_fib_ui(z.ptr, n.to_i) }
       end
     end
   end

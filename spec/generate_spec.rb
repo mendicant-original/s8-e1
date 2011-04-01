@@ -11,6 +11,7 @@ describe 'generate' do
     :__gmpz_set_str       => [[:pointer, :string, :int], :int],
     :__gmpz_fits_slong_p  => [[:pointer], :int],
     :__gmpz_get_si        => [[:pointer], :long],
+    :__gmpz_fib_ui        => [[:pointer, :ulong], :void]
   }
 
   Examples.each_pair { |name, types|

@@ -6,7 +6,7 @@ require 'rspec/core/rake_task'
 RSpec::Core::RakeTask.new(:spec => :build)
 
 task :test do
-  tests = %w[tc_z tc_z_basic]
+  tests = %w[tc_z tc_z_basic tc_fib_fac_nextprime]
   tests.each { |test|
     puts "== Running test #{test}:"
     ruby '-W0', "tests_from_gmp_gem/#{test}.rb"

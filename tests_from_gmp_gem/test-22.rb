@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'gmp'
+require_relative 'test_helper'
 
 a = GMP::F.new 0
 b = GMP::F.new 1
