@@ -10,7 +10,7 @@ module GMP
       Lib.z_init(@ptr)
       case n
       when Z
-        Lib.z_set(@ptr, n.ptr)
+        @ptr = n.ptr # Lib.z_set(@ptr, n.ptr)
       when Integer
         from_i(n)
       when String
@@ -93,6 +93,31 @@ module GMP
           Lib.z_mul_si(r.ptr, @ptr, other)
         when Z
           Lib.z_mul(r.ptr, @ptr, other.ptr)
+        end
+      }
+    end
+
+    PowerModulo = Z.new(1<<128)
+    def ** exp
+      new { |r|
+        case exp
+        when Fixnum
+          if exp >= 0
+            Lib.z_pow_ui(r.ptr, @ptr, exp)
+          end
+        when Z
+          Lib.z_powm(r.ptr, @ptr, exp.ptr, PowerModulo.ptr) # FIXME
+        end
+      }
+    end
+
+    def powmod(exp, mod)
+      new { |r|
+        case exp
+        when Fixnum
+          Lib.z_powm_ui(r.ptr, @ptr, exp, Z.new(mod).ptr)
+        when Z
+          Lib.z_powm(r.ptr, @ptr, exp.ptr, Z.new(mod).ptr)
         end
       }
     end
