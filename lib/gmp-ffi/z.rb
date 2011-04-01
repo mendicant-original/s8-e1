@@ -128,10 +128,6 @@ module GMP
       end
     end
 
-    def !
-      new { |z| Lib.z_fac_ui(z.ptr, to_i) }
-    end
-
     private
     def sign i
       i == 0 ? 0 : i > 0 ? 1 : -1
@@ -153,6 +149,13 @@ module GMP
         @ptr = Z.new(i.to_s).ptr
       end
       self
+    end
+
+    class << self
+      def factorial(n)
+        Z.new.tap { |z| Lib.z_fac_ui(z.ptr, n) }
+      end
+      alias :fac :factorial
     end
   end
 end

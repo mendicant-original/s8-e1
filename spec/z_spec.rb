@@ -50,13 +50,13 @@ describe Z do
     (2*three).should == 6
   end
 
-  it '!' do
-    Z(0).!.should == 1
-    Z(1).!.should == 1
-    two.!.should == 2
-    three.!.should == 6
-    Z(6).!.should == 720
-    Z(30).!.should == 265252859812191058636308480000000
+  it 'factorial' do
+    Z.factorial(0).should == 1
+    Z.factorial(1).should == 1
+    Z.factorial(2).should == 2
+    Z.factorial(3).should == 6
+    Z.factorial(6).should == 720
+    Z.factorial(30).should == 265252859812191058636308480000000
   end
 
   it 'to_s' do
