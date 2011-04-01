@@ -11,8 +11,8 @@ end
 shared_examples_for 'Z#from_i' do |meth|
   it "Z##{meth}" do
     [-2**62-1, -2**62, -2**30-1, -2**30, -7, 42, 2**30-1, 2**30, 2**62-1, 2**62].each { |n|
-      z = Z.send(meth, n)
-      z.should be_an_instance_of Z
+      z = Z.new
+      z.send(meth, n)
       z.should == n
     }
   end

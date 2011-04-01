@@ -11,10 +11,8 @@ module GMP
       case n
       when Z
         Lib.z_set(@ptr, n.ptr)
-      when Fixnum
-        Lib.z_set_si(@ptr, n)
-      when Bignum
-        @ptr = EXT ? Z.fast_from_i(n).ptr : Z.ruby_from_i(n).ptr
+      when Integer
+        EXT ? fast_from_i(n) : ruby_from_i(n)
       when String
         Lib.z_set_str(@ptr, n, 0)
       end
@@ -134,13 +132,19 @@ module GMP
       new { |z| Lib.z_fac_ui(z.ptr, to_i) }
     end
 
-    def self.ruby_from_i(i)
-      Z.new i.to_s
-    end
-
     private
     def sign i
       i == 0 ? 0 : i > 0 ? 1 : -1
+    end
+
+    def ruby_from_i(i)
+      case i
+      when Fixnum
+        Lib.z_set_si(@ptr, i)
+      when Bignum
+        @ptr = Z.new(i.to_s).ptr
+      end
+      self
     end
   end
 end

@@ -22,10 +22,9 @@ VALUE mpz_fast_to_i(VALUE self) {
 	return mpz2num((MP_INT*) NUM2LL(rb_funcall(rb_iv_get(self, "@ptr"), id_address, 0)));
 }
 
-VALUE mpz_fast_from_i(VALUE klass, VALUE i) {
+VALUE mpz_fast_from_i(VALUE self, VALUE i) {
 	mpz_t *z; // We need a pointer, else it will go out of scope and be GC'd
 	z = malloc(sizeof(mpz_t));
-	VALUE z_obj = rb_funcall(cZ, id_new, 0);
 	if(FIXNUM_P(i)) {
 		mpz_init_set_si(*z, FIX2LONG(i));
 	} else {
@@ -35,8 +34,8 @@ VALUE mpz_fast_from_i(VALUE klass, VALUE i) {
 			mpz_neg(*z, *z);
 	}
 
-	rb_iv_set(z_obj, "@ptr", rb_funcall(rb_path2class("FFI::Pointer"), id_new, 1, LL2NUM((uintptr_t)*z)));
-	return z_obj;
+	rb_iv_set(self, "@ptr", rb_funcall(rb_path2class("FFI::Pointer"), id_new, 1, LL2NUM((uintptr_t)*z)));
+	return self;
 }
 
 void Init_gmp_ffi() {
@@ -46,5 +45,5 @@ void Init_gmp_ffi() {
 	VALUE mGMP = rb_define_module("GMP");
 	cZ = rb_define_class_under(mGMP, "Z", rb_cObject);
 	rb_define_method(cZ, "fast_to_i", mpz_fast_to_i, 0);
-	rb_define_singleton_method(cZ, "fast_from_i", mpz_fast_from_i, 1);
+	rb_define_method(cZ, "fast_from_i", mpz_fast_from_i, 1);
 }
