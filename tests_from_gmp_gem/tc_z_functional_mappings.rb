@@ -26,7 +26,7 @@ class TC_Z_Functional_Mappings < Test::Unit::TestCase
       end
     end
   end
-  
+
   # 02 mpz_t_or_ui__mpz_t_or_ui__to__mpz_t__returns__void
   def test_FUNC_MAP__ZUI_ZUI__TO__Z__RETURNS__VOID
     functions = [:sub]
@@ -43,7 +43,7 @@ class TC_Z_Functional_Mappings < Test::Unit::TestCase
       end
     end
   end
-  
+
   # 03 mpz_t__mpz_t_or_si_or_ui__to__mpz_t__returns__void
   def test_FUNC_MAP__Z_ZSIUI__TO__Z__RETURNS__VOID
     functions = [:mul]
@@ -60,7 +60,7 @@ class TC_Z_Functional_Mappings < Test::Unit::TestCase
       end
     end
   end
-  
+
   # 04 mpz_t__mp_bitcnt_t__to__mpz_t__returns__void
   def test_FUNC_MAP__Z_BITCNT__TO__Z__RETURNS__VOID
     functions = [:mul_2exp, :cdiv_q_2exp, :cdiv_r_2exp, :fdiv_q_2exp, :fdiv_r_2exp, :tdiv_q_2exp, :tdiv_r_2exp]
@@ -83,7 +83,7 @@ class TC_Z_Functional_Mappings < Test::Unit::TestCase
       end
     end
   end
-  
+
   # 05 mpz_t__to__mpz_t__returns__void
   def test_FUNC_MAP__Z__TO__Z__RETURNS__VOID
     functions = [:neg, :abs, :sqrt, :nextprime, :com]

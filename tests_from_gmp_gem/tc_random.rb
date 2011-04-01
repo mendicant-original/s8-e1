@@ -12,7 +12,7 @@ class TC_Random < Test::Unit::TestCase
     g1.size.times do |i|
       assert_equal(g1[i], @a.urandomb(12), "GMP::RandState should urandomb predictably.")
     end
-    
+
     @b = GMP::RandState.new
     @b.seed(314159)
     g2 = [   20,     5,    40,    228,    223,    205,   1750,    690,    5794,   13752,
@@ -21,7 +21,7 @@ class TC_Random < Test::Unit::TestCase
       assert_equal(g2[i], @b.urandomb(i+5), "GMP::RandState should urandomb predictably.")
     end
   end
-  
+
   def test_urandomm
     @a = GMP::RandState.new
     @a.seed(8675309)
@@ -31,7 +31,7 @@ class TC_Random < Test::Unit::TestCase
     g1.size.times do |i|
       assert_equal(g1[i], @a.urandomm(n1[i%6]), "GMP::RandState should urandomm predictably.")
     end
-    
+
     @b = GMP::RandState.new
     @b.seed(67898771)
     g2 = [    1,     2,     3,    182,    393,  1232,    238,   10168,  10671,   28310,
@@ -40,7 +40,7 @@ class TC_Random < Test::Unit::TestCase
       assert_equal(g2[i], @b.urandomm(GMP::Z(i**5+5)), "GMP::RandState should urandomb predictably.")
     end
   end
-  
+
   def test_reseed
     @c = GMP::RandState.new
     @c.seed(1000)
@@ -56,13 +56,13 @@ class TC_Random < Test::Unit::TestCase
     assert_equal(42961, @c.urandomb(16), "GMP::RandState should re-seed correctly.")
     assert_equal(44699, @c.urandomb(16), "GMP::RandState should re-seed correctly.")
   end
-  
+
   def test_random_independent_states
     @d = GMP::RandState.new
     @d.seed(13579)
     @e = GMP::RandState.new
     @e.seed(13579)
-    
+
     assert_equal( 392, @d.urandomb(12), "GMP::RandState should be independent correctly.")
     assert_equal( 507, @d.urandomb(12), "GMP::RandState should be independent correctly.")
     assert_equal( 392, @e.urandomb(12), "GMP::RandState should be independent correctly.")

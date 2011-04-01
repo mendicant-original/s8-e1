@@ -7,13 +7,13 @@ class TC_to_i_to_d < Test::Unit::TestCase
     @c = GMP::Q.new(200,11)
     @d = GMP::Z.new(-123456789)
   end
-  
+
   def test_to_i
     assert_equal(@a.to_i, 100, "GMP::Z should to_i correctly.")
     assert_equal(@a.to_i.class, Fixnum, "GMP::Z.to_i should be a Fixnum.")
     assert_equal(@b.to_i, 2**32, "GMP::Z (Bignum) should to_i correctly.")
   end
-  
+
   def test_to_d
     assert_equal(@a.to_d, 100.0, "GMP::Z should to_d correctly.")
     assert_equal(@a.to_d.class, Float, "GMP::Z.to_d should be a Float.")
@@ -21,7 +21,7 @@ class TC_to_i_to_d < Test::Unit::TestCase
     assert_equal(@b.to_d.class, Float, "GMP::Z.to_d should be a Float.")
     assert_equal(@c.to_d.class, Float, "GMP::Q.to_d should be a Float.")
   end
-  
+
   def test_to_s
     assert_equal(                         "100", @a.to_s      , "GMP::Z should to_s correctly.")
     assert_equal(                  "4294967296", @b.to_s      , "GMP::Z should to_s correctly.")
@@ -50,7 +50,7 @@ class TC_to_i_to_d < Test::Unit::TestCase
     assert_equal(                  "-726746425", @d.to_s(:oct), "GMP::Z should to_s correctly.")
     assert_equal(                  "-123456789", @d.to_s(:dec), "GMP::Z should to_s correctly.")
     assert_equal(                    "-75bcd15", @d.to_s(:hex), "GMP::Z should to_s correctly.")
-    
+
     assert_equal("1",          GMP::Z.new(1).to_s,          "Z(1).to_s should equal '1'")
     assert_equal("-1",         GMP::Z.new(-1).to_s,         "Z(1).to_s should equal '-1'")
     assert_equal("1234567890", GMP::Z.new(1234567890).to_s, "GMP::Z should to_s correctly.")

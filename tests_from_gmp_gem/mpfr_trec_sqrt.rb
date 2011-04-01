@@ -19,7 +19,7 @@ class MPFR_TREC_SQRT < Test::Unit::TestCase
     return 0 if exp < 0
     f.to_s[2..(index_e-1)][0,exp]
   end
-  
+
   def special
     x = @nan.rec_sqrt(GMP::GMP_RNDN)
     assert_true(x.nan?, "@nan.rec_sqrt should be NaN")
@@ -36,7 +36,7 @@ class MPFR_TREC_SQRT < Test::Unit::TestCase
     assert_true(x.nan?, "@neg_one.rec_sqrt should be NaN")
     x = @one.rec_sqrt(GMP::GMP_RNDN)
     assert_equal(@one, x, "@one.rec_sqrt should be 1")
-    
+
     # Can't do 0b1e-1 yet
     #x = GMP::F("0b1.0001110110101001010100e-1", 23)
     #y = x.rec_sqrt(GMP::GMP_RNDU, 33)
@@ -52,7 +52,7 @@ class MPFR_TREC_SQRT < Test::Unit::TestCase
     y = x.rec_sqrt(GMP::GMP_RNDZ, 6)
     assert_equal(y, z, "These should be equal...")
   end
-  
+
   def test_prec
     special
     bad_case1

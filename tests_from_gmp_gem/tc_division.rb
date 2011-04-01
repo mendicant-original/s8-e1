@@ -9,7 +9,7 @@ class TC_division < Test::Unit::TestCase
     @e = GMP::F.new(3.14)
     @f = 2**32
   end
-  
+
   def test_z_div
     assert_equal(GMP::Q, (@a / @b   ).class, "GMP::Z / GMP::Z should be GMP::Q.")
     assert_equal(GMP::Q, (@a / 3    ).class, "GMP::Z / Fixnum should be GMP::Q.")
@@ -33,7 +33,7 @@ class TC_division < Test::Unit::TestCase
       end
     end
   end
-  
+
   def test_z_tdiv
     assert_equal(GMP::Z, @a.tdiv(@b).class,    "GMP::Z.tdiv GMP::Z should be GMP::Z.")
     assert_equal(GMP::Z, @a.tdiv(3).class,     "GMP::Z.tdiv Fixnum should be GMP::Z.")
@@ -45,7 +45,7 @@ class TC_division < Test::Unit::TestCase
     assert_equal(0, @a.tdiv(@c), "GMP::Z.tdiv should work.")
     assert_equal(5, @c.tdiv(@a), "GMP::Z.tdiv should work.")
   end
-  
+
   def test_z_fdiv
     assert_equal(GMP::Z, @a.fdiv(@b).class,    "GMP::Z.fdiv GMP::Z should be GMP::Z.")
     assert_equal(GMP::Z, @a.fdiv(3).class,     "GMP::Z.fdiv Fixnum should be GMP::Z.")
@@ -56,7 +56,7 @@ class TC_division < Test::Unit::TestCase
     assert_equal(0, @a.fdiv(@c), "GMP::Z.fdiv should work.")
     assert_equal(5, @c.fdiv(@a), "GMP::Z.fdiv should work.")
   end
-  
+
   def test_z_cdiv
     assert_equal(GMP::Z, @a.cdiv(@b).class,    "GMP::Z.cdiv GMP::Z should be GMP::Z.")
     assert_equal(GMP::Z, @a.cdiv(3).class,     "GMP::Z.cdiv Fixnum should be GMP::Z.")
@@ -67,7 +67,7 @@ class TC_division < Test::Unit::TestCase
     assert_equal(1, @a.cdiv(@c), "GMP::Z.cdiv should work.")
     assert_equal(5, @c.cdiv(@a), "GMP::Z.cdiv should work.")
   end
-  
+
   def test_z_tmod
     assert_equal(GMP::Z, @a.tmod(@b).class,    "GMP::Z.tmod GMP::Z should be GMP::Z.")
     assert_equal(GMP::Z, @a.tmod(3).class,     "GMP::Z.tmod Fixnum should be GMP::Z.")
@@ -79,7 +79,7 @@ class TC_division < Test::Unit::TestCase
     assert_equal(5, @a.tmod(@c), "GMP::Z.tmod should work.")
     assert_equal(0, @c.tmod(@a), "GMP::Z.tmod should work.")
   end
-  
+
   def test_z_fmod
     assert_equal(GMP::Z, @a.fmod(@b).class,    "GMP::Z.fmod GMP::Z should be GMP::Z.")
     assert_equal(GMP::Z, @a.fmod(3).class,     "GMP::Z.fmod Fixnum should be GMP::Z.")
@@ -91,7 +91,7 @@ class TC_division < Test::Unit::TestCase
     assert_equal(5, @a.fmod(@c), "GMP::Z.fmod should work.")
     assert_equal(0, @c.fmod(@a), "GMP::Z.fmod should work.")
   end
-  
+
   def test_z_cmod
     assert_equal(GMP::Z, @a.cmod(@b).class,    "GMP::Z.cmod GMP::Z should be GMP::Z.")
     assert_equal(GMP::Z, @a.cmod(3).class,     "GMP::Z.cmod Fixnum should be GMP::Z.")
@@ -103,7 +103,7 @@ class TC_division < Test::Unit::TestCase
     assert_equal(-20, @a.cmod(@c), "GMP::Z.cmod should work.")
     assert_equal(  0, @c.cmod(@a), "GMP::Z.cmod should work.")
   end
-  
+
   def test_z_mod
     assert_equal(5,       @a % @b, "GMP::Z should % GMP::Z correctly.")
     assert_equal(2,       @b % @a, "GMP::Z should % GMP::Z correctly.")

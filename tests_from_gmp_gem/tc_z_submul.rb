@@ -24,7 +24,7 @@ class TC_Z_Submul < Test::Unit::TestCase
     neg_two = GMP::Z(-2)
     m20.submul!(m19, neg_two)  # <= 1_048_575 - -1_048_574
     assert_equal(2_097_149, m20, "GMP::Z should submul GMP::Z correctly")
-    
+
     neg_m40 = -GMP::Z(2)**40  # -1_099_511_627_776
     ten_million  =        10_000_000
     neg_million  = -GMP::Z(1_000_000)

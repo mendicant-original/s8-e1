@@ -6,7 +6,7 @@ class TC_floor_ceil_truncate < Test::Unit::TestCase
     @b = -@a
     @c = GMP::Q.new(70,10)
   end
-  
+
   def test_floor_ceil_truncate
     assert_equal(@a.floor, 18, "GMP::Q should floor.")
     assert_equal(@a.ceil, 19, "GMP::Q should ceil.")

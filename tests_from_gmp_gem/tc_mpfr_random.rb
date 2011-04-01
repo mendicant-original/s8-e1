@@ -16,7 +16,7 @@ class TC_MPFR_Random < Test::Unit::TestCase
       assert_in_delta(g1[i], @a.mpfr_urandomb, 1e-12, "GMP::RandState should mpfr_urandomb predictably.")
     end
   end
-  
+
   def test_reseed
     @c = GMP::RandState.new
     @c.seed(1000)
@@ -32,13 +32,13 @@ class TC_MPFR_Random < Test::Unit::TestCase
     assert_in_delta(GMP::F("0.94422653925308231"), @c.mpfr_urandomb, 1e-12, "GMP::RandState should re-seed correctly.")
     assert_in_delta(GMP::F("0.60678541956109799"), @c.mpfr_urandomb, 1e-12, "GMP::RandState should re-seed correctly.")
   end
-  
+
   def test_random_independent_states
     @d = GMP::RandState.new
     @d.seed(577)
     @e = GMP::RandState.new
     @e.seed(577)
-    
+
     assert_in_delta(GMP::F("0.39810885576093713"), @d.mpfr_urandomb, 1e-12, "GMP::RandState should be independent correctly.")
     assert_in_delta(GMP::F("0.97212443610368071"), @d.mpfr_urandomb, 1e-12, "GMP::RandState should be independent correctly.")
     assert_in_delta(GMP::F("0.39810885576093713"), @e.mpfr_urandomb, 1e-12, "GMP::RandState should be independent correctly.")

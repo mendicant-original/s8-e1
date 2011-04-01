@@ -3,7 +3,7 @@ require './test_helper'
 class MPFR_TCONST_EULER < Test::Unit::TestCase
   def setup
     @rand_state = GMP::RandState.new
-    
+
     if GMP::MPFR_VERSION >= "3.0.0"
       @mpfr_rnd_max = 5
     else
@@ -28,7 +28,7 @@ class MPFR_TCONST_EULER < Test::Unit::TestCase
         GMP::F.const_euler(y, rnd)
         err = rnd == GMP::GMP_RNDN ? yprec+1 : yprec
         if y.can_round?(err, rnd, rnd, p)
-        
+
         end
       end
     end

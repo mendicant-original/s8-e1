@@ -7,7 +7,7 @@ class TC_swap < Test::Unit::TestCase
     @c=GMP::Q.new(100,11)
     @d=GMP::Q.new(200,17)
   end
-  
+
   def test_swap
     @a.swap @b
     @c.swap @d
