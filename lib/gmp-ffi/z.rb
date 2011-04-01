@@ -128,6 +128,22 @@ module GMP
       end
     end
 
+    def even?
+      EXT ? Ext.even?(self) : divisible?(2)
+    end
+
+    def odd?
+      EXT ? !Ext.even?(self) : !divisible?(2)
+    end
+
+    def power?
+      Lib.z_perfect_power?(@ptr)
+    end
+
+    def square?
+      Lib.z_perfect_square?(@ptr)
+    end
+
     def next_prime
       new { |z| Lib.z_nextprime(z.ptr, @ptr) }
     end

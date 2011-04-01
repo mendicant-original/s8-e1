@@ -6,6 +6,10 @@
 ID id_address, id_new;
 VALUE cZ;
 
+MP_INT* rbZ2mpz(VALUE z) {
+	return (MP_INT*) NUM2LONG(rb_funcall(rb_iv_get(z, "@ptr"), id_address, 0));
+}
+
 VALUE mpz2num(mpz_t z) {
   if(mpz_fits_slong_p(z)) {
     return LONG2NUM(mpz_get_si(z));
@@ -19,7 +23,7 @@ VALUE mpz2num(mpz_t z) {
 }
 
 VALUE mpz_fast_to_i(VALUE self) {
-	return mpz2num((MP_INT*) NUM2LL(rb_funcall(rb_iv_get(self, "@ptr"), id_address, 0)));
+	return mpz2num(rbZ2mpz(self));
 }
 
 VALUE mpz_fast_from_i(VALUE self, VALUE i) {
@@ -38,6 +42,11 @@ VALUE mpz_fast_from_i(VALUE self, VALUE i) {
 	return self;
 }
 
+VALUE rb_mpz_even_p(VALUE mod, VALUE self) {
+	MP_INT *z = rbZ2mpz(self);
+	return mpz_even_p(z) ? Qtrue : Qfalse;
+}
+
 void Init_gmp_ffi() {
 	id_address = rb_intern("address");
 	id_new = rb_intern("new");
@@ -46,4 +55,7 @@ void Init_gmp_ffi() {
 	cZ = rb_define_class_under(mGMP, "Z", rb_cObject);
 	rb_define_private_method(cZ, "fast_to_i", mpz_fast_to_i, 0);
 	rb_define_private_method(cZ, "fast_from_i", mpz_fast_from_i, 1);
+
+	VALUE mExt = rb_define_module_under(mGMP, "Ext");
+	rb_define_singleton_method(mExt, "even?", rb_mpz_even_p, 1);
 }
