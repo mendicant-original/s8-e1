@@ -19,6 +19,15 @@ describe Z do
     two.should_not == three
   end
 
+  it '<=>' do
+    two.should be < three
+    two.should be <= three
+    three.should be >= two
+    three.should be > two
+    two.should be >= two
+    two.should be <= two
+  end
+
   it '+@' do
     (+two).should == two
     (+two).should == 2
