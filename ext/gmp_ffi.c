@@ -44,6 +44,6 @@ void Init_gmp_ffi() {
 
 	VALUE mGMP = rb_define_module("GMP");
 	cZ = rb_define_class_under(mGMP, "Z", rb_cObject);
-	rb_define_method(cZ, "fast_to_i", mpz_fast_to_i, 0);
-	rb_define_method(cZ, "fast_from_i", mpz_fast_from_i, 1);
+	rb_define_private_method(cZ, "fast_to_i", mpz_fast_to_i, 0);
+	rb_define_private_method(cZ, "fast_from_i", mpz_fast_from_i, 1);
 }

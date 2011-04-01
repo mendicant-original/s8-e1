@@ -64,6 +64,6 @@ describe Z do
     Z(12345678909876543210).to_s.should == '12345678909876543210'
   end
 
-  it_should_behave_like 'Z#to_i', :to_i
+  it_should_behave_like 'Z#to_i', :ruby_to_i
   it_should_behave_like 'Z#from_i', :ruby_from_i
 end

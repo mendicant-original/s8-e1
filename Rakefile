@@ -20,3 +20,9 @@ end
 file 'ext/Makefile' => 'ext/extconf.rb' do
   Dir.chdir('ext') { ruby 'extconf.rb' }
 end
+
+task :bench do
+  Dir['bench/*.rb'].each { |bench|
+    ruby '-W0', bench
+  }
+end

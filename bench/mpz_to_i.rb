@@ -1,17 +1,16 @@
 require_relative '../lib/gmp-ffi'
 require 'benchmark'
 
-N = 100_000
+N = 50_000
 
-Benchmark.bm(12) do |x|
-  [2**64-1, 2**1024+1].each { |n|
-    p n
-    n = GMP::Z.new(n)
-    x.report("to_i") {
-      N.times { n.to_i }
+Benchmark.bm(15) do |x|
+  [64, 1024].each { |p|
+    n = GMP::Z.new(2**p-1)
+    x.report("ruby_to_i #{p}") {
+      N.times { n.send(:ruby_to_i) }
     }
-    x.report("fast_to_i") {
-      N.times { n.fast_to_i }
+    x.report("fast_to_i #{p}") {
+      N.times { n.send(:fast_to_i) }
     }
   }
 end

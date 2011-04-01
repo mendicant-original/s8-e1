@@ -12,10 +12,14 @@ module GMP
       when Z
         Lib.z_set(@ptr, n.ptr)
       when Integer
-        EXT ? fast_from_i(n) : ruby_from_i(n)
+        from_i(n)
       when String
         Lib.z_set_str(@ptr, n, 0)
       end
+    end
+
+    def from_i n
+      EXT ? fast_from_i(n) : ruby_from_i(n)
     end
 
     def new
@@ -98,11 +102,7 @@ module GMP
     end
 
     def to_i
-      if fits_long?
-        Lib.z_get_si(@ptr)
-      else
-        to_s.to_i # FIXME
-      end
+      EXT ? fast_to_i : ruby_to_i
     end
 
     def to_s
@@ -135,6 +135,14 @@ module GMP
     private
     def sign i
       i == 0 ? 0 : i > 0 ? 1 : -1
+    end
+
+    def ruby_to_i
+      if fits_long?
+        Lib.z_get_si(@ptr)
+      else
+        to_s.to_i
+      end
     end
 
     def ruby_from_i(i)
