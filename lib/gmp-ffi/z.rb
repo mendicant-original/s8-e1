@@ -14,7 +14,7 @@ module GMP
       when Fixnum
         Lib.z_set_si(@ptr, n)
       when Bignum
-        Lib.z_set_str(@ptr, n.to_s, 0) # FIXME
+        @ptr = EXT ? Z.fast_from_i(n).ptr : Z.ruby_from_i(n).ptr
       when String
         Lib.z_set_str(@ptr, n, 0)
       end
