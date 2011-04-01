@@ -5,7 +5,7 @@ ID id_address;
 
 VALUE mpz2num(MP_INT* z) {
   if(mpz_fits_slong_p(z)) {
-    return INT2FIX(mpz_get_si(z));
+    return LONG2NUM(mpz_get_si(z));
   } else {
     long size = (mpz_sizeinbase(z, 2) + 8*SIZEOF_BDIGITS-1) / (8*SIZEOF_BDIGITS);
     VALUE big = rb_big_new(size, 1);

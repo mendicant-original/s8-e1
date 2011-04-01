@@ -1,3 +1,6 @@
+ # must be required first or "Symbol not found"
+require_relative '../ext/gmp_ffi' rescue nil
+
 module GMP
   extend self
   def Z(*args)

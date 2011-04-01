@@ -63,4 +63,6 @@ describe Z do
     two.to_s.should == '2'
     Z(12345678909876543210).to_s.should == '12345678909876543210'
   end
+
+  it_should_behave_like 'Z#to_i', :to_i
 end

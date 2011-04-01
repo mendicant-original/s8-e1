@@ -12,3 +12,11 @@ task :test do
     ruby '-W0', "tests_from_gmp_gem/#{test}.rb"
   }
 end
+
+task :build => 'ext/Makefile' do
+  Dir.chdir('ext') { sh 'make' }
+end
+
+file 'ext/Makefile' => 'ext/extconf.rb' do
+  Dir.chdir('ext') { ruby 'extconf.rb' }
+end
