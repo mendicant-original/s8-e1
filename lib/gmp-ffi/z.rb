@@ -155,7 +155,6 @@ module GMP
       def factorial(n)
         Z.new.tap { |z| Lib.z_fac_ui(z.ptr, n) }
       end
-      alias :fac :factorial
     end
   end
 end
