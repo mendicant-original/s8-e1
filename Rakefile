@@ -6,7 +6,10 @@ require 'rspec/core/rake_task'
 RSpec::Core::RakeTask.new(:spec => :build)
 
 task :test do
-  tests = %w[tc_z tc_z_basic tc_fib_fac_nextprime tc_hashes tc_logical_roots tc_z_exponentiation]
+  tests = %w[
+    tc_z tc_z_basic tc_fib_fac_nextprime tc_hashes tc_logical_roots tc_z_exponentiation
+    tc_z_gcd_lcm_invert
+  ]
   tests = tests.map { |test| "tests_from_gmp_gem/#{test}.rb" }
   require 'test/unit'
   runner = Test::Unit::AutoRunner.new(true)

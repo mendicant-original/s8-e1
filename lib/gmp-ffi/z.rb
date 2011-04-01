@@ -115,9 +115,9 @@ module GMP
       new { |r|
         case exp
         when Fixnum
-          Lib.z_powm_ui(r.ptr, @ptr, exp, Z.new(mod).ptr)
+          Lib.z_powm_ui(r.ptr, @ptr, exp, GMP::Z(mod).ptr)
         when Z
-          Lib.z_powm(r.ptr, @ptr, exp.ptr, Z.new(mod).ptr)
+          Lib.z_powm(r.ptr, @ptr, exp.ptr, GMP::Z(mod).ptr)
         end
       }
     end
@@ -171,6 +171,16 @@ module GMP
 
     def next_prime
       new { |z| Lib.z_nextprime(z.ptr, @ptr) }
+    end
+
+    def gcd other
+      new { |z| Lib.z_gcd(z.ptr, @ptr, GMP::Z(other).ptr) }
+    end
+
+    def invert mod
+      new { |z|
+        Lib.z_invert(z.ptr, @ptr, mod.ptr)
+      }
     end
 
     private
