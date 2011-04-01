@@ -1,7 +1,4 @@
-# WOW, this fails if first: require_relative '../lib/gmp-ffi'
-require_relative '../ext/gmp_ffi'
 require_relative '../lib/gmp-ffi'
-
 require 'benchmark'
 
 N = 100_000
