@@ -65,4 +65,5 @@ describe Z do
   end
 
   it_should_behave_like 'Z#to_i', :to_i
+  it_should_behave_like 'Z#from_i', :ruby_from_i
 end

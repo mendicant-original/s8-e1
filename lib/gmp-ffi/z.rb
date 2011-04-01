@@ -5,7 +5,7 @@ module GMP
     include Comparable
 
     attr_reader :ptr
-    def initialize(n = nil)
+    def initialize(n = 0)
       @ptr = FFI::MemoryPointer.new(:pointer) # should be a pointer to __mpz_struct
       Lib.z_init(@ptr)
       case n
@@ -35,7 +35,7 @@ module GMP
       when Fixnum
         fits_long? and Lib.z_get_si(@ptr) == other
       when Bignum
-        !fits_long? and to_i == other
+        to_i == other
       end
     end
 
@@ -132,6 +132,10 @@ module GMP
 
     def !
       new { |z| Lib.z_fac_ui(z.ptr, to_i) }
+    end
+
+    def self.ruby_from_i(i)
+      Z.new i.to_s
     end
 
     private

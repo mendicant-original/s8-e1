@@ -3,7 +3,7 @@ task :default => :check
 task :check => [:spec, :test]
 
 require 'rspec/core/rake_task'
-RSpec::Core::RakeTask.new(:spec)
+RSpec::Core::RakeTask.new(:spec => :build)
 
 task :test do
   tests = %w[tc_z tc_z_basic]

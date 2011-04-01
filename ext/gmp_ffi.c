@@ -1,9 +1,12 @@
 #include <ruby.h>
 #include <gmp.h>
 
-ID id_address;
+#define P(obj) printf("%s\n", RSTRING_PTR(rb_funcall(obj, rb_intern("inspect"), 0)))
 
-VALUE mpz2num(MP_INT* z) {
+ID id_address, id_new;
+VALUE cZ;
+
+VALUE mpz2num(mpz_t z) {
   if(mpz_fits_slong_p(z)) {
     return LONG2NUM(mpz_get_si(z));
   } else {
@@ -15,18 +18,33 @@ VALUE mpz2num(MP_INT* z) {
   }
 }
 
-MP_INT* ffi_pointer2mpz(VALUE ptr) {
-	return (MP_INT*) NUM2LONG(rb_funcall(ptr, id_address, 0));
+VALUE mpz_fast_to_i(VALUE self) {
+	return mpz2num((MP_INT*) NUM2LL(rb_funcall(rb_iv_get(self, "@ptr"), id_address, 0)));
 }
 
-VALUE mpz_fast_to_i(VALUE self) {
-	return mpz2num(ffi_pointer2mpz(rb_iv_get(self, "@ptr")));
+VALUE mpz_fast_from_i(VALUE klass, VALUE i) {
+	mpz_t *z; // We need a pointer, else it will go out of scope and be GC'd
+	z = malloc(sizeof(mpz_t));
+	VALUE z_obj = rb_funcall(cZ, id_new, 0);
+	if(FIXNUM_P(i)) {
+		mpz_init_set_si(*z, FIX2LONG(i));
+	} else {
+		mpz_init(*z);
+		mpz_import(*z, RBIGNUM_LEN(i), -1, SIZEOF_BDIGITS, 0, 0, RBIGNUM_DIGITS(i));
+		if(RBIGNUM_NEGATIVE_P(i))
+			mpz_neg(*z, *z);
+	}
+
+	rb_iv_set(z_obj, "@ptr", rb_funcall(rb_path2class("FFI::Pointer"), id_new, 1, LL2NUM((uintptr_t)*z)));
+	return z_obj;
 }
 
 void Init_gmp_ffi() {
 	id_address = rb_intern("address");
+	id_new = rb_intern("new");
 
 	VALUE mGMP = rb_define_module("GMP");
-	VALUE cZ = rb_define_class_under(mGMP, "Z", rb_cObject);
+	cZ = rb_define_class_under(mGMP, "Z", rb_cObject);
 	rb_define_method(cZ, "fast_to_i", mpz_fast_to_i, 0);
+	rb_define_singleton_method(cZ, "fast_from_i", mpz_fast_from_i, 1);
 }
