@@ -7,10 +7,11 @@ RSpec::Core::RakeTask.new(:spec => :build)
 
 task :test do
   tests = %w[tc_z tc_z_basic tc_fib_fac_nextprime]
-  tests.each { |test|
-    puts "== Running test #{test}:"
-    ruby '-W0', "tests_from_gmp_gem/#{test}.rb"
-  }
+  tests = tests.map { |test| "tests_from_gmp_gem/#{test}.rb" }
+  require 'test/unit'
+  runner = Test::Unit::AutoRunner.new(true)
+  runner.process_args(tests)
+  runner.run
 end
 
 task :build => 'ext/Makefile' do
