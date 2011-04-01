@@ -1,4 +1,4 @@
-require './test_helper'
+require_relative 'test_helper'
 
 class GMP_TGCD < Test::Unit::TestCase
   def setup

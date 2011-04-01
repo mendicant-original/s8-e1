@@ -1,4 +1,4 @@
-require './test_helper'
+require_relative 'test_helper'
 
 class MPFR_TCONST_EULER < Test::Unit::TestCase
   def setup

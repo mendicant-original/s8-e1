@@ -1,4 +1,4 @@
-require './test_helper'
+require_relative 'test_helper'
 
 class TC_Z_Functional_Mappings < Test::Unit::TestCase
   def setup

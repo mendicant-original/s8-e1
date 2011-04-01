@@ -1,4 +1,4 @@
-require './test_helper'
+require_relative 'test_helper'
 
 class MPFR_TREC_SQRT < Test::Unit::TestCase
   def setup

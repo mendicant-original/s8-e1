@@ -1,4 +1,4 @@
-require './test_helper'
+require_relative 'test_helper'
 
 class TC_to_i_to_d < Test::Unit::TestCase
   def setup

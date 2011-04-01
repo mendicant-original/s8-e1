@@ -1,4 +1,4 @@
-require './test_helper'
+require_relative 'test_helper'
 
 class TC_MPFR_Functions < Test::Unit::TestCase
   def setup

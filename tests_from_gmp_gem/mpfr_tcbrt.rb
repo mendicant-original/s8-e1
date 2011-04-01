@@ -1,4 +1,4 @@
-require './test_helper'
+require_relative 'test_helper'
 
 class MPFR_TCBRT < Test::Unit::TestCase
   def setup
