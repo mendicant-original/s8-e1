@@ -22,6 +22,7 @@ describe 'generate' do
     :__gmpq_set_si        => [[:pointer, :long, :ulong], :void],
     :__gmpq_set_ui        => [[:pointer, :ulong, :ulong], :void],
     :__gmpq_set_str       => [[:pointer, :string, :int], :int],
+    :__gmpq_inv           => [[:pointer, :pointer], :void],
   }
 
   Examples.each_pair { |name, types|
