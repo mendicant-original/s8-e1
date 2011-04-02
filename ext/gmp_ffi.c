@@ -27,20 +27,15 @@ VALUE mpz_fast_to_i(VALUE self) {
 }
 
 VALUE mpz_fast_from_i(VALUE self, VALUE i) {
-	mpz_t *z; // We need a pointer, else it will go out of scope and be GC'd
-	z = malloc(sizeof(mpz_t));
+	MP_INT *z = rbZ2mpz(self);
 	if(FIXNUM_P(i)) {
-		mpz_init_set_si(*z, FIX2LONG(i));
+		mpz_set_si(z, FIX2LONG(i));
 	} else {
-		mpz_init(*z);
-		mpz_import(*z, RBIGNUM_LEN(i), -1, SIZEOF_BDIGITS, 0, 0, RBIGNUM_DIGITS(i));
+		mpz_import(z, RBIGNUM_LEN(i), -1, SIZEOF_BDIGITS, 0, 0, RBIGNUM_DIGITS(i));
 		if(RBIGNUM_NEGATIVE_P(i))
-			mpz_neg(*z, *z);
+			mpz_neg(z, z);
 	}
 
-	rb_iv_set(self, "@ptr",
-		rb_funcall(rb_path2class("GMP::Struct::MpZ"), id_new, 1,
-			rb_funcall(rb_path2class("FFI::Pointer"), id_new, 1, LL2NUM((uintptr_t)*z))));
 	return self;
 }
 

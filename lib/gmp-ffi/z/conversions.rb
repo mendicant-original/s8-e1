@@ -34,7 +34,7 @@ module GMP
       when Fixnum
         Lib.z_set_si(@ptr, i)
       when Bignum
-        @ptr = Z.new(i.to_s).ptr
+        Lib.z_set_str(@ptr, i.to_s, 0)
       end
       self
     end
