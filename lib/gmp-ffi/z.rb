@@ -162,7 +162,7 @@ module GMP
     end
 
     def []=(i, v)
-      if v
+      if v and v != 0
         Lib.z_setbit(@ptr, i.to_i)
       else
         Lib.z_clrbit(@ptr, i.to_i)

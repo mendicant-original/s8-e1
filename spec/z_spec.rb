@@ -14,6 +14,14 @@ describe Z do
     two.should == 2
   end
 
+  it 'dup' do
+    z = two.dup
+    z.ptr.should_not == two.ptr
+    z[0] = 1
+    z.should == 3
+    two.should == 2
+  end
+
   it '==' do
     two.should == 2
     2.should == two
