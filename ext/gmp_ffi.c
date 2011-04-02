@@ -3,11 +3,11 @@
 
 #define P(obj) printf("%s\n", RSTRING_PTR(rb_funcall(obj, rb_intern("inspect"), 0)))
 
-ID id_address, id_new;
+ID id_address, id_new, id_pointer;
 VALUE cZ;
 
 MP_INT* rbZ2mpz(VALUE z) {
-	return (MP_INT*) NUM2LL(rb_funcall(rb_iv_get(z, "@ptr"), id_address, 0));
+	return (MP_INT*) NUM2LL(rb_funcall(rb_funcall(rb_iv_get(z, "@ptr"), id_pointer, 0), id_address, 0));
 }
 
 VALUE mpz2num(mpz_t z) {
@@ -38,7 +38,9 @@ VALUE mpz_fast_from_i(VALUE self, VALUE i) {
 			mpz_neg(*z, *z);
 	}
 
-	rb_iv_set(self, "@ptr", rb_funcall(rb_path2class("FFI::Pointer"), id_new, 1, LL2NUM((uintptr_t)*z)));
+	rb_iv_set(self, "@ptr",
+		rb_funcall(rb_path2class("GMP::Struct::MpZ"), id_new, 1,
+			rb_funcall(rb_path2class("FFI::Pointer"), id_new, 1, LL2NUM((uintptr_t)*z))));
 	return self;
 }
 
@@ -50,6 +52,7 @@ VALUE rb_mpz_even_p(VALUE mod, VALUE self) {
 void Init_gmp_ffi() {
 	id_address = rb_intern("address");
 	id_new = rb_intern("new");
+	id_pointer = rb_intern("pointer");
 
 	VALUE mGMP = rb_define_module("GMP");
 	cZ = rb_define_class_under(mGMP, "Z", rb_cObject);

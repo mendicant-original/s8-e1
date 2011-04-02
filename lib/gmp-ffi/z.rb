@@ -6,8 +6,10 @@ module GMP
     def initialize(n = nil, copy = true)
       if !copy and Z === n
         @ptr = n.ptr
+      elsif Struct::MpZ === n
+        @ptr = n
       else
-        @ptr = FFI::MemoryPointer.new(:pointer) # should be a pointer to __mpz_struct
+        @ptr = Struct::MpZ.new # should be a pointer to __mpz_struct
         Lib.z_init(@ptr)
         case n
         when Z
