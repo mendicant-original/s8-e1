@@ -257,6 +257,11 @@ module GMP
       self
     end
 
+    def submul! a, b
+      Lib.z_submul(@ptr, GMP::Z(a).ptr, GMP::Z(b).ptr)
+      self
+    end
+
     private
     def sign i
       i == 0 ? 0 : i > 0 ? 1 : -1

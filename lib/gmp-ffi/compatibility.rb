@@ -20,6 +20,12 @@ module GMP
       old_addmul!(a, b)
     end
 
+    alias :old_submul! :submul!
+    def submul!(a, b)
+      raise RangeError if Fixnum === b and b < 0
+      old_submul!(a, b)
+    end
+
     class << self
       alias :fac :factorial
       alias :fib :fibonacci
