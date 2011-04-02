@@ -143,6 +143,14 @@ module GMP
       }
     end
 
+    def << i
+      new { |z| Lib.z_mul_2exp(z.ptr, @ptr, i.to_i) }
+    end
+
+    def >> i
+      new { |z| Lib.z_fdiv_q_2exp(z.ptr, @ptr, i.to_i) }
+    end
+
     def [](i)
       Lib.z_tstbit(@ptr, i.to_i) == 1
     end
