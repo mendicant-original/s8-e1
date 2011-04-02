@@ -10,6 +10,11 @@ module GMP
   def Z(n = nil)
     Z.new(n, false)
   end
+
+  def require_recursive
+    file = caller.first.partition(':').first
+    Dir[File.expand_path("../#{File.basename(file,'.rb')}/*.rb", file)].each { |f| require f }
+  end
 end
 
-Dir[File.dirname(__FILE__)+'/gmp-ffi/*.rb'].each { |file| require file }
+GMP.require_recursive

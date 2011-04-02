@@ -26,4 +26,4 @@ module GMP
   end
 end
 
-Dir[File.dirname(__FILE__)+'/z/*.rb'].each { |file| require file }
+GMP.require_recursive
