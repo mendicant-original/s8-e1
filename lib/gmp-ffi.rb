@@ -12,4 +12,4 @@ module GMP
   end
 end
 
-Dir[File.expand_path('..', __FILE__)+'/gmp-ffi/*'].each { |file| require file }
+Dir[File.dirname(__FILE__)+'/gmp-ffi/*.rb'].each { |file| require file }
