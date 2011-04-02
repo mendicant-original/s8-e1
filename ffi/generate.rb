@@ -10,7 +10,7 @@ functions_file = "#{dir}/functions.yml"
 system 'gcc', '-E', header, '-o', preprocessed unless File.exist? preprocessed
 
 TYPE = /(?![ ])[ a-z*\[\]_]+/
-NAME = /[a-zA-Z_]+/
+NAME = /[a-zA-Z0-9_]+/
 PARAM = /
 #{TYPE}(?:\s+#{NAME})?
 |

@@ -7,6 +7,16 @@
 :__gmp_randinit_default:
 - - :pointer
 - :void
+:__gmp_randinit_lc_2exp:
+- - :pointer
+  - :pointer
+  - :ulong
+  - :ulong
+- :void
+:__gmp_randinit_lc_2exp_size:
+- - :pointer
+  - :ulong
+- :int
 :__gmp_randinit_mt:
 - - :pointer
 - :void
@@ -115,6 +125,11 @@
   - :pointer
   - :pointer
 - :void
+:__gmpz_cdiv_q_2exp:
+- - :pointer
+  - :pointer
+  - :ulong
+- :void
 :__gmpz_cdiv_q_ui:
 - - :pointer
   - :pointer
@@ -136,6 +151,11 @@
 - - :pointer
   - :pointer
   - :pointer
+- :void
+:__gmpz_cdiv_r_2exp:
+- - :pointer
+  - :pointer
+  - :ulong
 - :void
 :__gmpz_cdiv_r_ui:
 - - :pointer
@@ -198,6 +218,11 @@
   - :pointer
   - :pointer
 - :int
+:__gmpz_congruent_2exp_p:
+- - :pointer
+  - :pointer
+  - :ulong
+- :int
 :__gmpz_congruent_ui_p:
 - - :pointer
   - :ulong
@@ -218,6 +243,10 @@
   - :pointer
 - :int
 :__gmpz_divisible_ui_p:
+- - :pointer
+  - :ulong
+- :int
+:__gmpz_divisible_2exp_p:
 - - :pointer
   - :ulong
 - :int
@@ -242,6 +271,11 @@
   - :pointer
   - :pointer
 - :void
+:__gmpz_fdiv_q_2exp:
+- - :pointer
+  - :pointer
+  - :ulong
+- :void
 :__gmpz_fdiv_q_ui:
 - - :pointer
   - :pointer
@@ -264,6 +298,11 @@
   - :pointer
   - :pointer
 - :void
+:__gmpz_fdiv_r_2exp:
+- - :pointer
+  - :pointer
+  - :ulong
+- :void
 :__gmpz_fdiv_r_ui:
 - - :pointer
   - :pointer
@@ -275,6 +314,11 @@
 - :ulong
 :__gmpz_fib_ui:
 - - :pointer
+  - :ulong
+- :void
+:__gmpz_fib2_ui:
+- - :pointer
+  - :pointer
   - :ulong
 - :void
 :__gmpz_fits_sint_p:
@@ -315,6 +359,10 @@
 :__gmpz_get_d:
 - - :pointer
 - :double
+:__gmpz_get_d_2exp:
+- - :pointer
+  - :pointer
+- :double
 :__gmpz_get_si:
 - - :pointer
 - :long
@@ -345,6 +393,10 @@
 - :void
 :__gmpz_init:
 - - :pointer
+- :void
+:__gmpz_init2:
+- - :pointer
+  - :ulong
 - :void
 :__gmpz_inits:
 - - :pointer
@@ -415,6 +467,11 @@
 - - :pointer
   - :ulong
 - :void
+:__gmpz_lucnum2_ui:
+- - :pointer
+  - :pointer
+  - :ulong
+- :void
 :__gmpz_millerrabin:
 - - :pointer
   - :int
@@ -428,6 +485,11 @@
 - - :pointer
   - :pointer
   - :pointer
+- :void
+:__gmpz_mul_2exp:
+- - :pointer
+  - :pointer
+  - :ulong
 - :void
 :__gmpz_mul_si:
 - - :pointer
@@ -487,6 +549,14 @@
 - - :pointer
   - :long
 - :void
+:__gmpz_random2:
+- - :pointer
+  - :long
+- :void
+:__gmpz_realloc2:
+- - :pointer
+  - :ulong
+- :void
 :__gmpz_remove:
 - - :pointer
   - :pointer
@@ -508,6 +578,14 @@
   - :pointer
   - :ulong
 - :void
+:__gmpz_scan0:
+- - :pointer
+  - :ulong
+- :ulong
+:__gmpz_scan1:
+- - :pointer
+  - :ulong
+- :ulong
 :__gmpz_set:
 - - :pointer
   - :pointer
@@ -591,6 +669,11 @@
   - :pointer
   - :pointer
 - :void
+:__gmpz_tdiv_q_2exp:
+- - :pointer
+  - :pointer
+  - :ulong
+- :void
 :__gmpz_tdiv_q_ui:
 - - :pointer
   - :pointer
@@ -612,6 +695,11 @@
 - - :pointer
   - :pointer
   - :pointer
+- :void
+:__gmpz_tdiv_r_2exp:
+- - :pointer
+  - :pointer
+  - :ulong
 - :void
 :__gmpz_tdiv_r_ui:
 - - :pointer
@@ -680,6 +768,11 @@
   - :pointer
   - :pointer
 - :void
+:__gmpq_div_2exp:
+- - :pointer
+  - :pointer
+  - :ulong
+- :void
 :__gmpq_equal:
 - - :pointer
   - :pointer
@@ -715,6 +808,11 @@
 - - :pointer
   - :pointer
   - :pointer
+- :void
+:__gmpq_mul_2exp:
+- - :pointer
+  - :pointer
+  - :ulong
 - :void
 :__gmpq_neg:
 - - :pointer
@@ -810,6 +908,11 @@
   - :pointer
   - :pointer
 - :void
+:__gmpf_div_2exp:
+- - :pointer
+  - :pointer
+  - :ulong
+- :void
 :__gmpf_div_ui:
 - - :pointer
   - :pointer
@@ -848,6 +951,10 @@
 :__gmpf_get_d:
 - - :pointer
 - :double
+:__gmpf_get_d_2exp:
+- - :pointer
+  - :pointer
+- :double
 :__gmpf_get_default_prec:
 - - :void
 - :ulong
@@ -869,6 +976,10 @@
 - :ulong
 :__gmpf_init:
 - - :pointer
+- :void
+:__gmpf_init2:
+- - :pointer
+  - :ulong
 - :void
 :__gmpf_inits:
 - - :pointer
@@ -903,6 +1014,11 @@
   - :pointer
   - :pointer
 - :void
+:__gmpf_mul_2exp:
+- - :pointer
+  - :pointer
+  - :ulong
+- :void
 :__gmpf_mul_ui:
 - - :pointer
   - :pointer
@@ -916,6 +1032,11 @@
 - - :pointer
   - :pointer
   - :ulong
+- :void
+:__gmpf_random2:
+- - :pointer
+  - :long
+  - :long
 - :void
 :__gmpf_reldiff:
 - - :pointer
@@ -1008,11 +1129,23 @@
   - :pointer
   - :long
 - :ulong
+:__gmpn_addmul_1:
+- - :pointer
+  - :pointer
+  - :long
+  - :ulong
+- :ulong
 :__gmpn_cmp:
 - - :pointer
   - :pointer
   - :long
 - :int
+:__gmpn_divexact_by3c:
+- - :pointer
+  - :pointer
+  - :long
+  - :ulong
+- :ulong
 :__gmpn_divrem:
 - - :pointer
   - :long
@@ -1021,6 +1154,20 @@
   - :pointer
   - :long
 - :ulong
+:__gmpn_divrem_1:
+- - :pointer
+  - :long
+  - :pointer
+  - :long
+  - :ulong
+- :ulong
+:__gmpn_divrem_2:
+- - :pointer
+  - :long
+  - :pointer
+  - :long
+  - :pointer
+- :ulong
 :__gmpn_gcd:
 - - :pointer
   - :pointer
@@ -1028,6 +1175,17 @@
   - :pointer
   - :long
 - :long
+:__gmpn_gcd_1:
+- - :pointer
+  - :long
+  - :ulong
+- :ulong
+:__gmpn_gcdext_1:
+- - :pointer
+  - :pointer
+  - :ulong
+  - :ulong
+- :ulong
 :__gmpn_gcdext:
 - - :pointer
   - :pointer
@@ -1054,12 +1212,23 @@
   - :long
   - :uint
 - :ulong
+:__gmpn_mod_1:
+- - :pointer
+  - :long
+  - :ulong
+- :ulong
 :__gmpn_mul:
 - - :pointer
   - :pointer
   - :long
   - :pointer
   - :long
+- :ulong
+:__gmpn_mul_1:
+- - :pointer
+  - :pointer
+  - :long
+  - :ulong
 - :ulong
 :__gmpn_mul_n:
 - - :pointer
@@ -1094,7 +1263,24 @@
 - - :pointer
   - :long
 - :ulong
+:__gmpn_pow_1:
+- - :pointer
+  - :pointer
+  - :long
+  - :ulong
+  - :pointer
+- :long
+:__gmpn_preinv_mod_1:
+- - :pointer
+  - :long
+  - :ulong
+  - :ulong
+- :ulong
 :__gmpn_random:
+- - :pointer
+  - :long
+- :void
+:__gmpn_random2:
 - - :pointer
   - :long
 - :void
@@ -1103,6 +1289,14 @@
   - :pointer
   - :long
   - :uint
+- :ulong
+:__gmpn_scan0:
+- - :pointer
+  - :ulong
+- :ulong
+:__gmpn_scan1:
+- - :pointer
+  - :ulong
 - :ulong
 :__gmpn_set_str:
 - - :pointer
@@ -1128,6 +1322,12 @@
   - :pointer
   - :pointer
   - :long
+- :ulong
+:__gmpn_submul_1:
+- - :pointer
+  - :pointer
+  - :long
+  - :ulong
 - :ulong
 :__gmpn_tdiv_qr:
 - - :pointer

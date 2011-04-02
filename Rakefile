@@ -17,12 +17,16 @@ task :test do
   runner.run
 end
 
-task :build => 'ext/Makefile' do
+task :build => ['ext/Makefile', 'ffi/functions.yml'] do
   Dir.chdir('ext') { sh 'make' }
 end
 
 file 'ext/Makefile' => 'ext/extconf.rb' do
   Dir.chdir('ext') { ruby 'extconf.rb' }
+end
+
+file 'ffi/functions.yml' => ['ffi/generate.rb', 'ffi/gmp.preprocessed.h'] do
+  ruby 'ffi/generate.rb'
 end
 
 task :bench do
