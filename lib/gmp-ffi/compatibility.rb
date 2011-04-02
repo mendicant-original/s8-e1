@@ -14,6 +14,12 @@ module GMP
 
     alias :nextprime :next_prime
 
+    alias :old_addmul! :addmul!
+    def addmul!(a, b)
+      raise RangeError if Fixnum === b and b < 0
+      old_addmul!(a, b)
+    end
+
     class << self
       alias :fac :factorial
       alias :fib :fibonacci

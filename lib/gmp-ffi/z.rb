@@ -26,6 +26,10 @@ module GMP
       EXT ? fast_from_i(n) : ruby_from_i(n)
     end
 
+    def dup
+      Z.new(self)
+    end
+
     def new
       Z.new.tap { |z| yield(z) }
     end
@@ -246,6 +250,11 @@ module GMP
       n = nil
       z = new { |z| n = Lib.z_remove(z.ptr, @ptr, GMP::Z(factor).ptr) }
       [z, n]
+    end
+
+    def addmul! a, b
+      Lib.z_addmul(@ptr, GMP::Z(a).ptr, GMP::Z(b).ptr)
+      self
     end
 
     private
