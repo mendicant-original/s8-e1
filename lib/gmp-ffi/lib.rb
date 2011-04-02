@@ -22,8 +22,8 @@ module GMP
       def method_missing(meth, *args, &block)
         if meth[-1] == '?' # predicate
           fun = meth[0...-1] << '_p'
-          define_singleton_method(meth) do |*args|
-            send(fun, *args) == 1
+          define_singleton_method(meth) do |*params|
+            send(fun, *params) == 1
           end
         elsif Functions.key?(function = :"__gmp#{meth}")
           params, type = Functions[function]

@@ -27,7 +27,7 @@ module GMP
 
     def remove factor
       n = nil
-      z = new { |z| n = Lib.z_remove(z.ptr, @ptr, GMP::Z(factor).ptr) }
+      z = new { |r| n = Lib.z_remove(r.ptr, @ptr, GMP::Z(factor).ptr) }
       [z, n]
     end
 
