@@ -121,7 +121,7 @@ class MPFR_TSQRT < Test::Unit::TestCase
   def property2(p, rounding)
     x = @rand_state.mpfr_urandomb(p)
     y = (x * x).sqrt(rounding)
-    assert_true(x == y, "sqrt(#{x.to_s}^2) should be #{x.to_s}, but is #{y.to_s} (rounding: #{GMP::F.default_rounding_mode.inspect}, prec: #{p.to_s}).")
+    assert(x == y, "sqrt(#{x.to_s}^2) should be #{x.to_s}, but is #{y.to_s} (rounding: #{GMP::F.default_rounding_mode.inspect}, prec: #{p.to_s}).")
   end
 
   def check3(as, rounding, qs)
