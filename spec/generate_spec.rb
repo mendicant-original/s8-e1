@@ -14,6 +14,14 @@ describe 'generate' do
     :__gmpz_fib_ui        => [[:pointer, :ulong], :void],
     :__gmpz_tstbit        => [[:pointer, :ulong], :int], # mp_bitcnt_t = ulong
     :__gmpz_scan0         => [[:pointer, :ulong], :ulong],
+
+    :__gmpq_init          => [[:pointer], :void],
+    :__gmpq_cmp_si        => [[:pointer, :long, :ulong], :int],
+    :__gmpq_get_str       => [[:string, :int, :pointer], :string],
+    :__gmpq_set           => [[:pointer, :pointer], :void],
+    :__gmpq_set_si        => [[:pointer, :long, :ulong], :void],
+    :__gmpq_set_ui        => [[:pointer, :ulong, :ulong], :void],
+    :__gmpq_set_str       => [[:pointer, :string, :int], :int],
   }
 
   Examples.each_pair { |name, types|
