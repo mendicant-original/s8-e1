@@ -49,6 +49,8 @@ module GMP
       case other
       when Z
         sign Lib.z_cmp(@ptr, other.ptr)
+      else # FIXME
+        self <=> GMP::Z(other)
       end
     end
 
@@ -218,6 +220,14 @@ module GMP
       Lib.z_perfect_square?(@ptr)
     end
 
+    def prime? # FIXME
+      require 'prime'
+      to_i.prime?
+    end
+    def composite?
+      Lib.z_probab_prime_p(@ptr, 5) == 0
+    end
+
     def next_prime
       new { |z| Lib.z_nextprime(z.ptr, @ptr) }
     end
@@ -230,6 +240,12 @@ module GMP
       new { |z|
         Lib.z_invert(z.ptr, @ptr, mod.ptr)
       }
+    end
+
+    def remove factor
+      n = nil
+      z = new { |z| n = Lib.z_remove(z.ptr, @ptr, GMP::Z(factor).ptr) }
+      [z, n]
     end
 
     private
@@ -262,6 +278,11 @@ module GMP
 
       def fibonacci(n)
         Z.new.tap { |z| Lib.z_fib_ui(z.ptr, n.to_i) }
+      end
+
+      def jacobi(a, b)
+        raise RangeError unless b.odd? and b > 0
+        Lib.z_jacobi(GMP::Z(a).ptr, GMP::Z(b).ptr)
       end
     end
   end
