@@ -4,6 +4,11 @@ describe Z do
   two = Z.new 2
   three = Z.new 3
 
+  it 'new, GMP::Z()' do
+    GMP::Z(two).ptr.should == two.ptr
+    Z.new(two).ptr.should_not == two.ptr
+  end
+
   it 'initialize' do
     Z.new.should == 0
     two.should == 2

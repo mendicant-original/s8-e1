@@ -5,16 +5,20 @@ module GMP
     include Comparable
 
     attr_reader :ptr
-    def initialize(n = nil)
-      @ptr = FFI::MemoryPointer.new(:pointer) # should be a pointer to __mpz_struct
-      Lib.z_init(@ptr)
-      case n
-      when Z
-        @ptr = n.ptr # Lib.z_set(@ptr, n.ptr)
-      when Integer
-        from_i(n)
-      when String
-        Lib.z_set_str(@ptr, n, 0)
+    def initialize(n = nil, copy = true)
+      if !copy and Z === n
+        @ptr = n.ptr
+      else
+        @ptr = FFI::MemoryPointer.new(:pointer) # should be a pointer to __mpz_struct
+        Lib.z_init(@ptr)
+        case n
+        when Z
+          Lib.z_set(@ptr, n.ptr)
+        when Integer
+          from_i(n)
+        when String
+          Lib.z_set_str(@ptr, n, 0)
+        end
       end
     end
 

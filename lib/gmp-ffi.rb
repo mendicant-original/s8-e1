@@ -7,8 +7,8 @@ module GMP
   end
 
   extend self
-  def Z(*args)
-    Z.new(*args)
+  def Z(n = nil)
+    Z.new(n, false)
   end
 end
 
