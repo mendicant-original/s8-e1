@@ -15,6 +15,8 @@ module GMP
           case n
           when Q
             Lib.q_set(@ptr, n.ptr)
+          when Fixnum
+            Lib.q_set_si(@ptr, n, 1)
           when String
             raise "Invalid string: #{n.inspect}" unless Lib.q_set_str(@ptr, n, 0) == 0
             Lib.q_canonicalize(@ptr)
@@ -22,7 +24,12 @@ module GMP
         else
           case [n,d].map(&:class)
           when [Fixnum, Fixnum]
+            n, d = -n, -d if d < 0
             Lib.q_set_si(@ptr, n, d)
+            Lib.q_canonicalize(@ptr)
+          when [Z, Z]
+            # FIXME
+            raise "Invalid string: #{n.inspect}" unless Lib.q_set_str(@ptr, "#{n}/#{d}", 0) == 0
             Lib.q_canonicalize(@ptr)
           end
         end
