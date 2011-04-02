@@ -86,6 +86,14 @@ describe Z do
     Z(12345678909876543210).to_s.should == '12345678909876543210'
   end
 
+  it 'lcm' do
+    three.lcm(two).should == 6
+    two.lcm(two).should == two
+    three.lcm(three).should == three
+    Z(124).lcm(135).should == 16740
+    Z(2**35*3**29).lcm(2**37*3**28).should == 2**37*3**29
+  end
+
   it_should_behave_like 'Z#to_i', :ruby_to_i
   it_should_behave_like 'Z#from_i', :ruby_from_i
 end

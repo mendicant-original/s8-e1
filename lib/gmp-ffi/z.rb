@@ -240,6 +240,10 @@ module GMP
       new { |z| Lib.z_gcd(z.ptr, @ptr, GMP::Z(other).ptr) }
     end
 
+    def lcm other
+      new { |z| Lib.z_lcm(z.ptr, @ptr, GMP::Z(other).ptr) }
+    end
+
     def invert mod
       new { |z|
         Lib.z_invert(z.ptr, @ptr, mod.ptr)
