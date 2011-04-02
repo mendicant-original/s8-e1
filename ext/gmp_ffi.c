@@ -7,7 +7,7 @@ ID id_address, id_new;
 VALUE cZ;
 
 MP_INT* rbZ2mpz(VALUE z) {
-	return (MP_INT*) NUM2LONG(rb_funcall(rb_iv_get(z, "@ptr"), id_address, 0));
+	return (MP_INT*) NUM2LL(rb_funcall(rb_iv_get(z, "@ptr"), id_address, 0));
 }
 
 VALUE mpz2num(mpz_t z) {
