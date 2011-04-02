@@ -3,7 +3,7 @@
 
 #define P(obj) printf("%s\n", RSTRING_PTR(rb_funcall(obj, rb_intern("inspect"), 0)))
 
-ID id_address, id_new, id_pointer;
+ID id_address, id_pointer;
 VALUE cZ;
 
 MP_INT* rbZ2mpz(VALUE z) {
@@ -46,7 +46,6 @@ VALUE rb_mpz_even_p(VALUE mod, VALUE self) {
 
 void Init_gmp_ffi() {
 	id_address = rb_intern("address");
-	id_new = rb_intern("new");
 	id_pointer = rb_intern("pointer");
 
 	VALUE mGMP = rb_define_module("GMP");
