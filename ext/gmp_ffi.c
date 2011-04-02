@@ -15,7 +15,7 @@ VALUE mpz2num(mpz_t z) {
     return LONG2NUM(mpz_get_si(z));
   } else {
     long size = (mpz_sizeinbase(z, 2) + 8*SIZEOF_BDIGITS-1) / (8*SIZEOF_BDIGITS);
-    VALUE big = rb_big_new(size, 1);
+    VALUE big = rb_big_new(size, mpz_sgn(z) >= 0);
     BDIGIT *digits = RBIGNUM_DIGITS(big);
     mpz_export(digits, NULL, -1, SIZEOF_BDIGITS, 0, 0, z);
     return big;
