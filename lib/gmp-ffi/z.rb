@@ -2,6 +2,15 @@ require_relative 'lib'
 
 module GMP
   class Z
+    def self.free! ptr
+      # lambda do not work
+      Proc.new { Lib.z_clear ptr }
+    end
+
+    def def_finalizer
+      ObjectSpace.define_finalizer(@ptr, self.class.free!(@ptr.pointer))
+    end
+
     attr_reader :ptr
     def initialize(n = nil, copy = true)
       if !copy and Z === n
@@ -11,6 +20,8 @@ module GMP
       else
         @ptr = Struct::MpZ.new # should be a pointer to __mpz_struct
         Lib.z_init(@ptr)
+        def_finalizer
+
         case n
         when Z
           Lib.z_set(@ptr, n.ptr)
