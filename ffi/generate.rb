@@ -3,8 +3,11 @@ require 'yaml'
 
 dir = File.dirname(__FILE__)
 
-header = "#{dir}/gmp.5.0.1.h"
+gmp_header = "#{dir}/gmp.5.0.1.h"
+header = "#{dir}/mpfr.3.0.0.h" # let's use mpfr as it includes gmp.h
+
 preprocessed = "#{dir}/gmp.preprocessed.h"
+
 functions_file = "#{dir}/functions.yml"
 constants_file = "#{dir}/constants.yml"
 
@@ -46,13 +49,15 @@ TYPES_MAP = {
   'long unsigned int' => :ulong,
   'unsigned long int' => :ulong,
   'long int' => :long,
+  'long double' => :long_double,
+  'mpfr_rnd_t' => :mpfr_rnd_t, # enum
 }
 
-%w[void int long double].each { |known| TYPES_MAP[known] = known.to_sym }
+%w[void int long float double].each { |known| TYPES_MAP[known] = known.to_sym }
 
 %w[int long].each { |known| TYPES_MAP["unsigned #{known}"] = "u#{known}".to_sym }
 
-%w[mpz mpf mpq].each { |kind|
+%w[mpz mpf mpq mpfr].each { |kind|
   TYPES_MAP["#{kind}_ptr"] = :pointer
   TYPES_MAP["#{kind}_srcptr"] = :pointer
   # fallback
@@ -79,6 +84,8 @@ def type_for type
     :pointer
   elsif IGNORE.include? type
     :pointer
+  elsif t = TYPES_MAP[type.split(' ')[0...-1].join(' ')] # remove var name
+    t
   else
     raise "unknown type: #{type}"
   end
@@ -87,7 +94,7 @@ end
 lines = File.readlines(preprocessed)
 lines.each(&:strip!)
 
-header_lines = File.readlines(header)
+gmp_header_lines = File.readlines(gmp_header)
 
 lines.each { |line|
   if line.start_with? 'typedef' and line.end_with? ';'
@@ -112,7 +119,7 @@ lines.each { |prototype|
 
 constants = {}
 [:GMP_CC, :GMP_CFLAGS].each { |const|
-  header_lines.find { |line|
+  gmp_header_lines.find { |line|
     line =~ /^#define __#{const} "(.+)"$/
     constants[const] = $1
   }

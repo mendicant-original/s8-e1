@@ -26,7 +26,9 @@ file 'ext/Makefile' => 'ext/extconf.rb' do
   Dir.chdir('ext') { ruby 'extconf.rb' }
 end
 
-file 'ffi/functions.yml' => ['ffi/generate.rb', 'ffi/gmp.preprocessed.h'] do
+file 'ffi/functions.yml' => 'ffi/gmp.preprocessed.h'
+
+file 'ffi/gmp.preprocessed.h' => 'ffi/generate.rb' do
   ruby 'ffi/generate.rb'
 end
 
