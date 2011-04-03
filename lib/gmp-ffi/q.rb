@@ -15,6 +15,8 @@ module GMP
           case n
           when Q
             Lib.q_set(@ptr, n.ptr)
+          when Z
+            Lib.q_set_z(@ptr, n.ptr)
           when Fixnum
             Lib.q_set_si(@ptr, n, 1)
           when String

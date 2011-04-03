@@ -8,6 +8,8 @@ module GMP
       case other
       when Q
         Lib.q_cmp(@ptr, other.ptr) == 0
+      when Z
+        Lib.q_cmp(@ptr, GMP::Q(other).ptr) == 0
       when Fixnum
         Lib.q_cmp_si(@ptr, other, 1) == 0
       when Rational
