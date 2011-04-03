@@ -21,5 +21,9 @@ module GMP
       Lib.q_abs(@ptr, @ptr)
       self
     end
+
+    def sign
+      numerator.sign
+    end
   end
 end

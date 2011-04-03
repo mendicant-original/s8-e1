@@ -22,8 +22,7 @@ module GMP
     def <=> other
       case other
       when Q
-        cmp = Lib.q_cmp(@ptr, other.ptr)
-        cmp == 0 ? 0 : cmp > 0 ? 1 : -1
+        GMP.sign Lib.q_cmp(@ptr, other.ptr)
       else # FIXME
         self <=> GMP::Q(other)
       end

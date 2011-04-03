@@ -52,5 +52,22 @@ module GMP
       Lib.z_scan1(@ptr, i.to_i)
     end
 
+    def neg!
+      Lib.z_neg(@ptr, @ptr)
+      self
+    end
+
+    def abs
+      new { |z| Lib.z_abs(z.ptr, @ptr) }
+    end
+
+    def abs!
+      Lib.z_abs(@ptr, @ptr)
+      self
+    end
+
+    def sign
+      GMP.sign @ptr[:_mp_size]
+    end
   end
 end

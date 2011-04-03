@@ -12,6 +12,7 @@ module GMP
 
     alias :nextprime :next_prime
     alias :com :~
+    alias :sgn :sign
 
     alias :old_addmul! :addmul!
     def addmul!(a, b)

@@ -6,6 +6,10 @@ module GMP
     false
   end
 
+  def GMP.sign i
+    i == 0 ? 0 : i > 0 ? 1 : -1
+  end
+
   extend self
   def Z(n = nil)
     Z.new(n, false)
