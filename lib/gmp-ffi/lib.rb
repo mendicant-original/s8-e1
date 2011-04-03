@@ -9,7 +9,13 @@ module GMP
     ffi_lib 'gmp'
 
     FunctionsFile = File.expand_path('../../../ffi/functions.yml', __FILE__)
+    ConstantsFile = File.expand_path('../../../ffi/constants.yml', __FILE__)
     Functions = YAML.load_file FunctionsFile
+    Constants = YAML.load_file ConstantsFile
+
+    Constants.each_pair { |const, value|
+      const_set const, value
+    }
 
     class << self
       def method_missing(meth, *args, &block)

@@ -11,7 +11,7 @@ task :test do
     tc_z_gcd_lcm_invert tc_z_logic tc_z_shifts_last_bits tc_z_jac_leg_rem tc_z_addmul
     tc_z_submul
     tc_q tc_q_basic
-    tc_zerodivisionexceptions tc_cmp
+    tc_zerodivisionexceptions tc_cmp tc_constants
   ]
   tests = tests.map { |test| "tests_from_gmp_gem/#{test}.rb" }
   require 'test/unit'

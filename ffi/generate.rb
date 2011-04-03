@@ -6,6 +6,7 @@ dir = File.dirname(__FILE__)
 header = "#{dir}/gmp.5.0.1.h"
 preprocessed = "#{dir}/gmp.preprocessed.h"
 functions_file = "#{dir}/functions.yml"
+constants_file = "#{dir}/constants.yml"
 
 system 'gcc', '-E', header, '-o', preprocessed unless File.exist? preprocessed
 
@@ -86,6 +87,8 @@ end
 lines = File.readlines(preprocessed)
 lines.each(&:strip!)
 
+header_lines = File.readlines(header)
+
 lines.each { |line|
   if line.start_with? 'typedef' and line.end_with? ';'
     _, *old_type, new_type = line.split(' ')
@@ -107,4 +110,23 @@ lines.each { |prototype|
   ]
 }
 
+constants = {}
+[:GMP_CC, :GMP_CFLAGS].each { |const|
+  header_lines.find { |line|
+    line =~ /^#define __#{const} "(.+)"$/
+    constants[const] = $1
+  }
+}
+require 'ffi'
+module Lib
+  extend FFI::Library
+  ffi_lib 'gmp'
+  attach_variable :gmp_version, :__gmp_version, :string
+  attach_variable :gmp_bits_per_limb, :__gmp_bits_per_limb, :int
+end
+
+constants[:GMP_VERSION] = Lib.gmp_version
+constants[:GMP_BITS_PER_LIMB] = Lib.gmp_bits_per_limb
+
 open(functions_file, 'w') { |f| f.write YAML.dump(functions) }
+open(constants_file, 'w') { |f| f.write YAML.dump(constants) }
