@@ -18,6 +18,8 @@ module GMP
             Lib.q_set(@ptr, n.ptr)
           when Z
             Lib.q_set_z(@ptr, n.ptr)
+          when Bignum
+            Lib.q_set_z(@ptr, Z.new(n).ptr) # FIXME
           when Fixnum
             Lib.q_set_si(@ptr, n, 1)
           when String
