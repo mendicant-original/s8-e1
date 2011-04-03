@@ -40,5 +40,11 @@ module GMP
       Lib.z_submul(@ptr, GMP::Z(a).ptr, GMP::Z(b).ptr)
       self
     end
+
+    def tdiv other
+      raise ZeroDivisionError if other == 0
+      q = Q.new
+      Lib.z_tdiv_q(q.ptr, @ptr, GMP::Z(other).ptr)
+    end
   end
 end
