@@ -1,5 +1,7 @@
 module GMP
   class Q
+     include Comparable
+
     def dup
       Q.new(self)
     end
@@ -15,6 +17,24 @@ module GMP
       when Rational
         Lib.q_cmp_si(@ptr, other.numerator, other.denominator) == 0
       end
+    end
+
+    def <=> other
+      case other
+      when Q
+        cmp = Lib.q_cmp(@ptr, other.ptr)
+        cmp == 0 ? 0 : cmp > 0 ? 1 : -1
+      else # FIXME
+        self <=> GMP::Q(other)
+      end
+    end
+
+    def hash
+      numerator.hash ^ denominator.hash
+    end
+
+    def eql? other
+      Q === other and self == other
     end
   end
 end

@@ -16,11 +16,6 @@ module GMP
       Lib.z_get_str(nil, 10, @ptr)
     end
 
-    def sign i
-      i == 0 ? 0 : i > 0 ? 1 : -1
-    end
-    private :sign
-
     def ruby_to_i
       if fits_long?
         Lib.z_get_si(@ptr)

@@ -10,6 +10,8 @@ module GMP
       case other
       when Z
         Lib.z_cmp(@ptr, other.ptr) == 0
+      when Q
+        other == self
       when Fixnum
         fits_long? and Lib.z_get_si(@ptr) == other
       when Bignum
@@ -20,7 +22,10 @@ module GMP
     def <=> other
       case other
       when Z
-        sign Lib.z_cmp(@ptr, other.ptr)
+        cmp = Lib.z_cmp(@ptr, other.ptr)
+        cmp == 0 ? 0 : cmp > 0 ? 1 : -1
+      when Q
+        - (other <=> self)
       else # FIXME
         self <=> GMP::Z(other)
       end
