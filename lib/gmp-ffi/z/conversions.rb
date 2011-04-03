@@ -12,8 +12,12 @@ module GMP
       EXT ? fast_to_i : ruby_to_i
     end
 
-    def to_s
-      Lib.z_get_str(nil, 10, @ptr)
+    def to_s(base = 10)
+      Lib.z_get_str(nil, base, @ptr)
+    end
+
+    def to_f
+      Lib.z_get_d(@ptr)
     end
 
     def ruby_to_i

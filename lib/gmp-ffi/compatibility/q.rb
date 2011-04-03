@@ -5,5 +5,6 @@ module GMP
     alias :neg :-@
     alias :sgn :sign
     alias :trunc :truncate
+    alias :to_d :to_f
   end
 end

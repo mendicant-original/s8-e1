@@ -13,6 +13,14 @@ module GMP
     alias :nextprime :next_prime
     alias :com :~
     alias :sgn :sign
+    alias :to_d :to_f
+
+    SymbolBases = { bin: 2, oct: 8, dec: 10, hex: 16 }
+    alias :old_to_s :to_s
+    def to_s(base = 10)
+      base = SymbolBases[base] if Symbol === base
+      old_to_s(base)
+    end
 
     alias :old_addmul! :addmul!
     def addmul!(a, b)
