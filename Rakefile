@@ -6,14 +6,14 @@ require 'rspec/core/rake_task'
 RSpec::Core::RakeTask.new(:spec => :build)
 
 task :test do
+  path = lambda { |test| "tests_from_gmp_gem/#{test}.rb" }
   tests = %w[
-    tc_z tc_z_basic tc_fib_fac_nextprime tc_hashes tc_logical_roots tc_z_exponentiation
-    tc_z_gcd_lcm_invert tc_z_logic tc_z_shifts_last_bits tc_z_jac_leg_rem tc_z_addmul
-    tc_z_submul
-    tc_q tc_q_basic
     tc_zerodivisionexceptions tc_cmp tc_constants tc_floor_ceil_truncate tc_sgn_neg_abs tc_swap
   ]
-  tests = tests.map { |test| "tests_from_gmp_gem/#{test}.rb" }
+  tests = tests.map { |test| path[test] }
+  tests |= Dir[path['tc_{z,q}*']]
+  tests.delete path['tc_z_functional_mappings']
+  tests.delete path['tc_z_to_dis']
   require 'test/unit'
   runner = Test::Unit::AutoRunner.new(true)
   runner.process_args(tests)
