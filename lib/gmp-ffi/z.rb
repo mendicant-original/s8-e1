@@ -11,7 +11,8 @@ module GMP
       ObjectSpace.define_finalizer(@ptr, self.class.free!(@ptr.pointer))
     end
 
-    attr_reader :ptr
+    attr_accessor :ptr
+    protected :ptr=
     def initialize(n = nil, copy = true)
       if !copy and Z === n
         @ptr = n.ptr

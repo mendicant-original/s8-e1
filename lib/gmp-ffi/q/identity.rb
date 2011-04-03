@@ -35,5 +35,9 @@ module GMP
     def eql? other
       Q === other and self == other
     end
+
+    def swap with
+      @ptr, with.ptr = with.ptr, @ptr
+    end
   end
 end

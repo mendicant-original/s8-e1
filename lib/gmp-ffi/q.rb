@@ -4,7 +4,8 @@ require_relative 'lib'
 
 module GMP
   class Q
-    attr_reader :ptr
+    attr_accessor :ptr
+    protected :ptr=
     def initialize(n = nil, d = nil, copy = true)
       if !copy and Q === n and d == nil
         @ptr = n.ptr
