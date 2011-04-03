@@ -107,15 +107,15 @@ class GMP_TGCD < Test::Unit::TestCase
       chain_len = 10
       (1..chain_len).each do |j|
         bs = @rand_state.urandomb(32)
-      bs = @rand_state.urandomb(bs.to_i % 12 + 1)
-      temp2 = @rand_state.rrandomb(bs.to_i + 1)
+	    bs = @rand_state.urandomb(bs.to_i % 12 + 1)
+	    temp2 = @rand_state.rrandomb(bs.to_i + 1)
         temp2 += 1
-      temp1 = op2 * temp2
+	    temp1 = op2 * temp2
         op1 += temp1
 
         bs = @rand_state.urandomb(32)
-      bs = @rand_state.urandomb(bs.to_i % 12 + 1)
-      temp2 = @rand_state.rrandomb(bs.to_i + 1)
+	    bs = @rand_state.urandomb(bs.to_i % 12 + 1)
+	    temp2 = @rand_state.rrandomb(bs.to_i + 1)
         temp2 += 1
         temp1 = op1 * temp2
         op2 += temp1
