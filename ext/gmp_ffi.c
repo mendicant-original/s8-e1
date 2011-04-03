@@ -52,7 +52,5 @@ void Init_gmp_ffi() {
 	cZ = rb_define_class_under(mGMP, "Z", rb_cObject);
 	rb_define_private_method(cZ, "fast_to_i", mpz_fast_to_i, 0);
 	rb_define_private_method(cZ, "fast_from_i", mpz_fast_from_i, 1);
-
-	VALUE mExt = rb_define_module_under(mGMP, "Ext");
-	rb_define_singleton_method(mExt, "even?", rb_mpz_even_p, 1);
+	rb_define_private_method(cZ, "fast_even?", rb_mpz_even_p, 1);
 }

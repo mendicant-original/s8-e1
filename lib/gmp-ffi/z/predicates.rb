@@ -12,11 +12,11 @@ module GMP
     end
 
     def even?
-      EXT ? Ext.even?(self) : divisible?(2)
+      EXT ? fast_even?(self) : divisible?(2)
     end
 
     def odd?
-      EXT ? !Ext.even?(self) : !divisible?(2)
+      EXT ? !fast_even?(self) : !divisible?(2)
     end
 
     def power?
