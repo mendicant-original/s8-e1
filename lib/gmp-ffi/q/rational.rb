@@ -10,5 +10,17 @@ module GMP
       Lib.q_inv(@ptr, @ptr)
       self
     end
+
+    def floor
+      Z.new.tap { |z| Lib.z_fdiv_q(z.ptr, numerator_ptr, denominator_ptr) }
+    end
+
+    def ceil
+      Z.new.tap { |z| Lib.z_cdiv_q(z.ptr, numerator_ptr, denominator_ptr) }
+    end
+
+    def truncate
+      Z.new.tap { |z| Lib.z_tdiv_q(z.ptr, numerator_ptr, denominator_ptr) }
+    end
   end
 end

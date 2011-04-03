@@ -33,6 +33,7 @@ module GMP
       end
     end
 
+    private
     def new
       Z.new.tap { |z| yield(z) }
     end

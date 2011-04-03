@@ -46,6 +46,15 @@ module GMP
       GMP::Z(@ptr[:_mp_den])
     end
 
+    private
+    def numerator_ptr
+      @ptr[:_mp_num]
+    end
+
+    def denominator_ptr
+      @ptr[:_mp_den]
+    end
+
     def new
       Q.new.tap { |q| yield(q) }
     end
