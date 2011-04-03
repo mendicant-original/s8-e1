@@ -7,12 +7,11 @@ RSpec::Core::RakeTask.new(:spec => :build)
 
 task :test do
   path = lambda { |test| "tests_from_gmp_gem/#{test}.rb" }
-  tests = %w[
-    tc_zerodivisionexceptions tc_cmp tc_constants tc_floor_ceil_truncate tc_sgn_neg_abs tc_swap
-  ]
-  tests = tests.map { |test| path[test] }
-  tests |= Dir[path['tc_{z,q}*']]
+  tests = Dir[path['*']].reject { |test|
+    File.read(test) =~ /\bGMP::(?:F|RandState)\b|MPFR/
+  }
   tests.delete path['tc_z_functional_mappings']
+
   require 'test/unit'
   runner = Test::Unit::AutoRunner.new(true)
   runner.process_args(tests)
