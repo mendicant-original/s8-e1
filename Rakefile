@@ -12,6 +12,8 @@ task :test do
   }
   tests.delete path['tc_z_functional_mappings']
 
+  tests << path['tc_random']
+
   require 'test/unit'
   runner = Test::Unit::AutoRunner.new(true)
   runner.process_args(tests)

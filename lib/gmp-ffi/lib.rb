@@ -27,6 +27,9 @@ module GMP
         elsif Functions.key?(function = :"__gmp#{meth}")
           params, type = Functions[function]
           attach_function meth, function, params.dup, type
+        elsif Functions.key?(function = :"__gmp_#{meth}")
+          params, type = Functions[function]
+          attach_function meth, function, params.dup, type
         else
           super
         end
