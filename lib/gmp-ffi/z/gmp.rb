@@ -31,9 +31,21 @@ module GMP
       [z, n]
     end
 
+    def divexact other
+      new { |z| Lib.z_divexact(z.ptr, @ptr, GMP::Z(other).ptr) }
+    end
+
+    def addmul a, b
+      new { |z| Lib.z_addmul(z.ptr, GMP::Z(a).ptr, GMP::Z(b).ptr) }
+    end
+
     def addmul! a, b
       Lib.z_addmul(@ptr, GMP::Z(a).ptr, GMP::Z(b).ptr)
       self
+    end
+
+    def submul a, b
+      new { |z| Lib.z_submul(z.ptr, GMP::Z(a).ptr, GMP::Z(b).ptr) }
     end
 
     def submul! a, b
@@ -43,8 +55,22 @@ module GMP
 
     def tdiv other
       raise ZeroDivisionError if other == 0
-      q = Q.new
-      Lib.z_tdiv_q(q.ptr, @ptr, GMP::Z(other).ptr)
+      Z.new { |z| Lib.z_tdiv_q(z.ptr, @ptr, GMP::Z(other).ptr) }
+    end
+
+    def tmod other
+      raise ZeroDivisionError if other == 0
+      Z.new { |z| Lib.z_tdiv_r(z.ptr, @ptr, GMP::Z(other).ptr) }
+    end
+
+    def gcdext other
+      [Z.new, Z.new, Z.new].tap { |g, s, t|
+        Lib.z_gcdext(g.ptr, s.ptr, t.ptr, @ptr, GMP::Z(other).ptr)
+      }
+    end
+
+    def cmpabs other
+      Lib.z_cmpabs(@ptr, GMP::Z(other).ptr)
     end
   end
 end

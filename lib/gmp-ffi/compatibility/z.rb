@@ -11,9 +11,11 @@ module GMP
     end
 
     alias :nextprime :next_prime
+    alias :neg :-@
     alias :com :~
     alias :sgn :sign
     alias :to_d :to_f
+    alias :add :+
 
     SymbolBases = { bin: 2, oct: 8, dec: 10, hex: 16 }
     alias :old_to_s :to_s

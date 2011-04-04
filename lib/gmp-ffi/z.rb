@@ -36,6 +36,11 @@ module GMP
       end
     end
 
+    def set z
+      @ptr = z.ptr
+      self
+    end
+
     private
     def new
       Z.new.tap { |z| yield(z) }

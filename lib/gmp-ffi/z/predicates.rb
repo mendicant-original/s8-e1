@@ -35,5 +35,13 @@ module GMP
     def composite?
       Lib.z_probab_prime_p(@ptr, 5) == 0
     end
+
+    def congruent? c, d
+      if Fixnum === c and Fixnum == d
+        Lib.z_congruent_ui_p(@ptr, c, d) != 0
+      else
+        Lib.z_congruent_p(@ptr, GMP::Z(c).ptr, GMP::Z(d).ptr) != 0
+      end
+    end
   end
 end

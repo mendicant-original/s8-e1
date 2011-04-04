@@ -53,4 +53,6 @@ void Init_gmp_ffi() {
 	rb_define_private_method(cZ, "fast_to_i", mpz_fast_to_i, 0);
 	rb_define_private_method(cZ, "fast_from_i", mpz_fast_from_i, 1);
 	rb_define_private_method(cZ, "fast_even?", rb_mpz_even_p, 1);
+
+	rb_define_const(mGMP, "GMP_NUMB_MAX", LL2NUM(GMP_NUMB_MAX));
 }

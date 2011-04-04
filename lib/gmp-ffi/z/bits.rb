@@ -9,7 +9,7 @@ module GMP
     end
 
     def ~
-      new { |z| Lib.z_com(z.ptr, @ptr) }.to_i
+      new { |z| Lib.z_com(z.ptr, @ptr) }
     end
 
     def & other
