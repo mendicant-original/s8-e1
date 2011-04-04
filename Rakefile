@@ -5,7 +5,7 @@ task :check => [:spec, :test]
 require 'rspec/core/rake_task'
 RSpec::Core::RakeTask.new(:spec => :build)
 
-task :test do
+task :test => :build do
   path = lambda { |test| "tests_from_gmp_gem/#{test}.rb" }
   tests = Dir[path['*']].reject { |test|
     File.read(test) =~ /\bGMP::F\b|MPFR/
@@ -30,7 +30,7 @@ file 'ffi/functions.yml' => 'ffi/generate.rb' do
   ruby 'ffi/generate.rb'
 end
 
-task :bench do
+task :bench => :build do
   Dir['bench/*.rb'].each { |bench|
     ruby '-W0', bench
   }
