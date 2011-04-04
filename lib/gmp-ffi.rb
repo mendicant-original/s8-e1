@@ -12,11 +12,11 @@ module GMP
 
   extend self
   def Z(n = nil)
-    Z.new(n, false)
+    Z === n ? n : Z.new(n)
   end
 
   def Q(n = nil, d = nil)
-    Q.new(n, d, false)
+    Q === n ? n : Q.new(n, d)
   end
 
   def require_recursive

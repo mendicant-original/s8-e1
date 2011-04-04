@@ -13,10 +13,8 @@ module GMP
 
     attr_accessor :ptr
     protected :ptr=
-    def initialize(n = nil, copy = true)
-      if !copy and Z === n
-        @ptr = n.ptr
-      elsif Struct::MpZ === n
+    def initialize(n = nil)
+      if Struct::MpZ === n
         @ptr = n
       else
         @ptr = Struct::MpZ.new # should be a pointer to __mpz_struct
@@ -30,6 +28,10 @@ module GMP
           from_i(n)
         when String
           Lib.z_set_str(@ptr, n, 0)
+        when NilClass
+          # default init
+        else
+          raise ArgumentError, "Unknown initializer: #{n}"
         end
       end
     end
