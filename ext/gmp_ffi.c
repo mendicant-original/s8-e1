@@ -4,7 +4,7 @@
 #define P(obj) printf("%s\n", RSTRING_PTR(rb_funcall(obj, rb_intern("inspect"), 0)))
 
 ID id_address, id_pointer;
-VALUE cZ;
+VALUE cZ, mGMP;
 
 MP_INT* rbZ2mpz(VALUE z) {
 	return (MP_INT*) NUM2LL(rb_funcall(rb_funcall(rb_iv_get(z, "@ptr"), id_pointer, 0), id_address, 0));
@@ -48,7 +48,7 @@ void Init_gmp_ffi() {
 	id_address = rb_intern("address");
 	id_pointer = rb_intern("pointer");
 
-	VALUE mGMP = rb_define_module("GMP");
+	mGMP = rb_define_module("GMP");
 	cZ = rb_define_class_under(mGMP, "Z", rb_cObject);
 	rb_define_private_method(cZ, "fast_to_i", mpz_fast_to_i, 0);
 	rb_define_private_method(cZ, "fast_from_i", mpz_fast_from_i, 1);
