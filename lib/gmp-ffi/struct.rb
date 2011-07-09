@@ -27,7 +27,7 @@ module GMP
     class RandState < FFI::Struct
       layout :_mp_seed, MpZ,
              :_mp_alg, :uint8, # unused enum
-             :_mp_lc, :pointer, # union
+             :_mp_lc, :pointer # union
     end
   end
 end
