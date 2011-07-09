@@ -6,11 +6,14 @@ require 'rspec/core/rake_task'
 RSpec::Core::RakeTask.new(:spec => :build)
 
 task :test => :build do
-  path = lambda { |test| "tests_from_gmp_gem/#{test}.rb" }
-  tests = Dir[path['*']].reject { |test|
+  dir = Object.new
+  def dir./(glob)
+    "tests_from_gmp_gem/#{glob}.rb"
+  end
+  tests = Dir[dir/'*'].reject { |test|
     File.read(test) =~ /\bGMP::F\b|MPFR/
   }
-  tests.delete path['gmp_tgcd'] # seems buggy data
+  tests.delete dir/'gmp_tgcd' # seems buggy data
 
   require 'test/unit'
   runner = Test::Unit::AutoRunner.new(true)
