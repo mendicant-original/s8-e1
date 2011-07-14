@@ -33,6 +33,11 @@ file 'ffi/functions.yml' => 'ffi/generate.rb' do
   ruby 'ffi/generate.rb'
 end
 
+task :clean do
+  Dir['ffi/{gmp.preprocessed.h,{constants,functions}.yml}'].each { |file| rm file }
+  Dir['ext/{gmp_ffi.{bundle,so,dll},Makefile}'].each { |file| rm file }
+end
+
 task :bench => :build do
   Dir['bench/*.rb'].each { |bench|
     ruby '-W0', bench
