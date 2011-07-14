@@ -1599,13 +1599,13 @@
   - :uint8
 - :ulong
 :mpfr_get_str:
-- - :pointer
+- - :string
   - :pointer
   - :int
   - :ulong
   - :pointer
   - :uint8
-- :pointer
+- :string
 :mpfr_get_z:
 - - :pointer
   - :pointer
@@ -1634,23 +1634,23 @@
   - :pointer
 - :void
 :mpfr_printf:
-- - :pointer
+- - :string
   - :varargs
 - :int
 :mpfr_asprintf:
 - - :pointer
-  - :pointer
+  - :string
   - :varargs
 - :int
 :mpfr_sprintf:
-- - :pointer
-  - :pointer
+- - :string
+  - :string
   - :varargs
 - :int
 :mpfr_snprintf:
-- - :pointer
+- - :string
   - :ulong
-  - :pointer
+  - :string
   - :varargs
 - :int
 :mpfr_pow:

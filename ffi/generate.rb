@@ -46,6 +46,7 @@ $/x
 TYPES_MAP = {
   '...' => :varargs,
   'char *' => :string,
+  'char*' => :string,
   'long unsigned int' => :ulong,
   'unsigned long int' => :ulong,
   'long int' => :long,
