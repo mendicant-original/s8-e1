@@ -8,7 +8,7 @@ module GMP
     extend FFI::Library
     ffi_lib 'mpfr'
 
-    enum :mpfr_rnd_t,
+    enum :mpfr_rnd_t, [
       :RNDN, # round to nearest, with ties to even
       :RNDZ, # round toward zero
       :RNDU, # round toward +Inf
@@ -16,6 +16,7 @@ module GMP
       :RNDA, # round away from zero
       :RNDF, # faithful rounding (not implemented yet)
       -1, :RNDNA # round to nearest, with ties away from zero (mpfr_round)
+    ]
 
     class << self
       def method_missing(meth, *args, &block)

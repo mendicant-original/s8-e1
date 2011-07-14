@@ -13,7 +13,7 @@ module GMP
 
     attr_accessor :ptr
     protected :ptr=
-    def initialize(f = nil, round = 0)
+    def initialize(f = nil, round = :RNDN)
       @ptr = Struct::F.new # should be a pointer to __mpfr_struct
       @round = round
       Mpfr.init(@ptr)

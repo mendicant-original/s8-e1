@@ -24,7 +24,7 @@ describe 'generate' do
     :__gmpq_set_str       => [[:pointer, :string, :int], :int],
     :__gmpq_inv           => [[:pointer, :pointer], :void],
 
-    :mpfr_get_str         => [[:string, :pointer, :int, :ulong, :pointer, :uint8], :string]
+    :mpfr_get_str         => [[:string, :pointer, :int, :ulong, :pointer, :mpfr_rnd_t], :string]
   }
 
   Examples.each_pair { |name, types|

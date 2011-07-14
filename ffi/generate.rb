@@ -52,7 +52,7 @@ TYPES_MAP = {
   'unsigned long int' => :ulong,
   'long int' => :long,
   'long double' => :long_double,
-  'mpfr_rnd_t' => :uint8, # enum
+  'mpfr_rnd_t' => :mpfr_rnd_t, # enum
 }
 
 %w[void int long float double].each { |known| TYPES_MAP[known] = known.to_sym }

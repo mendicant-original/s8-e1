@@ -19,7 +19,7 @@ module GMP
     Q === n ? n : Q.new(n, d)
   end
 
-  def F(f = nil, round = 0)
+  def F(f = nil, round = :RNDN)
     F === f ? f : F.new(f, round)
   end
 
