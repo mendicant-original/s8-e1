@@ -2,6 +2,15 @@ require_relative 'mpfr'
 
 module GMP
   class F
+    def self.free! ptr
+      # lambda do not work
+      Proc.new { Mpfr.clear ptr }
+    end
+
+    def def_finalizer
+      ObjectSpace.define_finalizer(@ptr, self.class.free!(@ptr.pointer))
+    end
+
     attr_accessor :ptr
     protected :ptr=
     def initialize(f = nil, round = 0)
