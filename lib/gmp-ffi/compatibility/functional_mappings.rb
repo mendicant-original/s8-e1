@@ -1,3 +1,5 @@
+require_relative '../z'
+
 module GMP
   class << Z
     [:addmul, :submul].each { |meth|
