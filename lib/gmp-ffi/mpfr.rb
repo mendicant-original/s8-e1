@@ -8,15 +8,6 @@ module GMP
     extend FFI::Library
     ffi_lib 'mpfr'
 
-    FunctionsFile = File.expand_path('../../../ffi/functions.yml', __FILE__)
-    ConstantsFile = File.expand_path('../../../ffi/constants.yml', __FILE__)
-    Functions = YAML.load_file FunctionsFile
-    Constants = YAML.load_file ConstantsFile
-
-    Constants.each_pair { |const, value|
-      const_set const, value
-    }
-
     enum :mpfr_rnd_t,
       :RNDN, # round to nearest, with ties to even
       :RNDZ, # round toward zero
@@ -33,8 +24,8 @@ module GMP
           define_singleton_method(meth) do |*params|
             send(fun, *params) == 1
           end
-        elsif Functions.key?(function = :"mpfr_#{meth}")
-          params, type = Functions[function]
+        elsif Lib::Functions.key?(function = :"mpfr_#{meth}")
+          params, type = Lib::Functions[function]
           attach_function meth, function, params.dup, type
         else
           super

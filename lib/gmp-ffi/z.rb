@@ -18,18 +18,18 @@ module GMP
         @ptr = n
       else
         @ptr = Struct::Z.new # should be a pointer to __mpz_struct
-        Lib.z_init(@ptr)
         def_finalizer
 
         case n
         when Z
-          Lib.z_set(@ptr, n.ptr)
+          Lib.z_init_set(@ptr, n.ptr)
         when Integer
+          Lib.z_init(@ptr)
           from_i(n)
         when String
-          Lib.z_set_str(@ptr, n, 0)
+          Lib.z_init_set_str(@ptr, n, 0)
         when NilClass
-          # default init
+          Lib.z_init(@ptr) # default init
         else
           raise ArgumentError, "Unknown initializer: #{n}"
         end
