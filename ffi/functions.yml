@@ -1437,11 +1437,11 @@
 - - :void
 - :long
 :mpfr_set_default_rounding_mode:
-- - :mpfr_rnd_t
+- - :uint8
 - :void
 :mpfr_get_default_rounding_mode:
 - - :void
-- :mpfr_rnd_t
+- :uint8
 :mpfr_clear_flags:
 - - :void
 - :void
@@ -1530,12 +1530,12 @@
 :mpfr_set_d:
 - - :pointer
   - :double
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_set_flt:
 - - :pointer
   - :float
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_set_nan:
 - - :pointer
@@ -1551,12 +1551,12 @@
 :mpfr_set_si:
 - - :pointer
   - :long
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_neg:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_signbit:
 - - :pointer
@@ -1567,15 +1567,15 @@
 - :long
 :mpfr_get_flt:
 - - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :float
 :mpfr_get_d:
 - - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :double
 :mpfr_get_ld:
 - - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :long_double
 :mpfr_get_d1:
 - - :pointer
@@ -1583,20 +1583,20 @@
 :mpfr_get_d_2exp:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :double
 :mpfr_get_ld_2exp:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :long_double
 :mpfr_get_si:
 - - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :long
 :mpfr_get_ui:
 - - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :ulong
 :mpfr_get_str:
 - - :pointer
@@ -1604,12 +1604,12 @@
   - :int
   - :ulong
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :pointer
 :mpfr_get_z:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_free_str:
 - - :string
@@ -1617,7 +1617,7 @@
 :mpfr_urandom:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_urandomb:
 - - :pointer
@@ -1657,261 +1657,261 @@
 - - :pointer
   - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_pow_si:
 - - :pointer
   - :pointer
   - :long
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_pow_ui:
 - - :pointer
   - :pointer
   - :ulong
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_ui_pow_ui:
 - - :pointer
   - :ulong
   - :ulong
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_ui_pow:
 - - :pointer
   - :ulong
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_pow_z:
 - - :pointer
   - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_sqrt:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_sqrt_ui:
 - - :pointer
   - :ulong
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_rec_sqrt:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_add:
 - - :pointer
   - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_sub:
 - - :pointer
   - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_mul:
 - - :pointer
   - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_div:
 - - :pointer
   - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_add_ui:
 - - :pointer
   - :pointer
   - :ulong
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_sub_ui:
 - - :pointer
   - :pointer
   - :ulong
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_ui_sub:
 - - :pointer
   - :ulong
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_mul_ui:
 - - :pointer
   - :pointer
   - :ulong
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_div_ui:
 - - :pointer
   - :pointer
   - :ulong
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_ui_div:
 - - :pointer
   - :ulong
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_add_si:
 - - :pointer
   - :pointer
   - :long
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_sub_si:
 - - :pointer
   - :pointer
   - :long
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_si_sub:
 - - :pointer
   - :long
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_mul_si:
 - - :pointer
   - :pointer
   - :long
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_div_si:
 - - :pointer
   - :pointer
   - :long
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_si_div:
 - - :pointer
   - :long
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_add_d:
 - - :pointer
   - :pointer
   - :double
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_sub_d:
 - - :pointer
   - :pointer
   - :double
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_d_sub:
 - - :pointer
   - :double
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_mul_d:
 - - :pointer
   - :pointer
   - :double
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_div_d:
 - - :pointer
   - :pointer
   - :double
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_d_div:
 - - :pointer
   - :double
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_sqr:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_const_pi:
 - - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_const_log2:
 - - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_const_euler:
 - - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_const_catalan:
 - - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_agm:
 - - :pointer
   - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_log:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_log2:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_log10:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_log1p:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_exp:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_exp2:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_exp10:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_expm1:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_eint:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_li2:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_cmp:
 - - :pointer
@@ -1956,7 +1956,7 @@
 - - :pointer
   - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :void
 :mpfr_eq:
 - - :pointer
@@ -1970,42 +1970,42 @@
 - - :pointer
   - :pointer
   - :ulong
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_div_2exp:
 - - :pointer
   - :pointer
   - :ulong
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_mul_2ui:
 - - :pointer
   - :pointer
   - :ulong
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_div_2ui:
 - - :pointer
   - :pointer
   - :ulong
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_mul_2si:
 - - :pointer
   - :pointer
   - :long
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_div_2si:
 - - :pointer
   - :pointer
   - :long
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_rint:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_round:
 - - :pointer
@@ -2026,84 +2026,84 @@
 :mpfr_rint_round:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_rint_trunc:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_rint_ceil:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_rint_floor:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_frac:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_modf:
 - - :pointer
   - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_remquo:
 - - :pointer
   - :pointer
   - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_remainder:
 - - :pointer
   - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_fmod:
 - - :pointer
   - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_fits_ulong_p:
 - - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_fits_slong_p:
 - - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_fits_uint_p:
 - - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_fits_sint_p:
 - - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_fits_ushort_p:
 - - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_fits_sshort_p:
 - - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_fits_uintmax_p:
 - - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_fits_intmax_p:
 - - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_extract:
 - - :pointer
@@ -2166,252 +2166,252 @@
 :mpfr_atanh:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_acosh:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_asinh:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_cosh:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_sinh:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_tanh:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_sinh_cosh:
 - - :pointer
   - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_sech:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_csch:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_coth:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_acos:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_asin:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_atan:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_sin:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_sin_cos:
 - - :pointer
   - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_cos:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_tan:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_atan2:
 - - :pointer
   - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_sec:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_csc:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_cot:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_hypot:
 - - :pointer
   - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_erf:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_erfc:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_cbrt:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_root:
 - - :pointer
   - :pointer
   - :ulong
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_gamma:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_lngamma:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_lgamma:
 - - :pointer
   - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_digamma:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_zeta:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_zeta_ui:
 - - :pointer
   - :ulong
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_fac_ui:
 - - :pointer
   - :ulong
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_j0:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_j1:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_jn:
 - - :pointer
   - :long
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_y0:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_y1:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_yn:
 - - :pointer
   - :long
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_ai:
 - - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_min:
 - - :pointer
   - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_max:
 - - :pointer
   - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_dim:
 - - :pointer
   - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_mul_z:
 - - :pointer
   - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_div_z:
 - - :pointer
   - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_add_z:
 - - :pointer
   - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_sub_z:
 - - :pointer
   - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_cmp_z:
 - - :pointer
@@ -2421,25 +2421,25 @@
 - - :pointer
   - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_div_q:
 - - :pointer
   - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_add_q:
 - - :pointer
   - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_sub_q:
 - - :pointer
   - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_cmp_q:
 - - :pointer
@@ -2454,20 +2454,20 @@
   - :pointer
   - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_fms:
 - - :pointer
   - :pointer
   - :pointer
   - :pointer
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_sum:
 - - :pointer
   - :pointer
   - :ulong
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_free_cache:
 - - :void
@@ -2475,14 +2475,14 @@
 :mpfr_subnormalize:
 - - :pointer
   - :int
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_strtofr:
 - - :pointer
   - :string
   - :pointer
   - :int
-  - :mpfr_rnd_t
+  - :uint8
 - :int
 :mpfr_custom_get_size:
 - - :long

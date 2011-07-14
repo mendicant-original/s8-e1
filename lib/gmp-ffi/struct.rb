@@ -13,9 +13,18 @@ module GMP
              :_mp_den, MpZ
     end
 
-    # class MpFR < FFI::Struct
-    #   layout
-    # end
+    # typedef struct {
+    #   mpfr_prec_t  _mpfr_prec;
+    #   mpfr_sign_t  _mpfr_sign;
+    #   mpfr_exp_t   _mpfr_exp;
+    #   mp_limb_t   *_mpfr_d;
+    # } __mpfr_struct;
+    class MpFR < FFI::Struct
+      layout :_mpfr_prec, :long,
+             :_mpfr_sign, :int,
+             :_mpfr_exp , :long,
+             :_mpfr_d   , :pointer
+    end
 
     # typedef struct {
     #   mpz_t _mp_seed;	  /* _mp_d member points to state of the generator. */
