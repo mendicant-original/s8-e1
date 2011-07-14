@@ -2,15 +2,15 @@ require 'ffi'
 
 module GMP
   module Struct
-    class MpZ < FFI::Struct
+    class Z < FFI::Struct
       layout :_mp_alloc, :int,
              :_mp_size , :int,
              :_mp_d    , :pointer # mp_limb_t*
     end
 
-    class MpQ < FFI::Struct
-      layout :_mp_num, MpZ,
-             :_mp_den, MpZ
+    class Q < FFI::Struct
+      layout :_mp_num, Z,
+             :_mp_den, Z
     end
 
     # typedef struct {
@@ -19,7 +19,7 @@ module GMP
     #   mpfr_exp_t   _mpfr_exp;
     #   mp_limb_t   *_mpfr_d;
     # } __mpfr_struct;
-    class MpFR < FFI::Struct
+    class F < FFI::Struct
       layout :_mpfr_prec, :long,
              :_mpfr_sign, :int,
              :_mpfr_exp , :long,
@@ -34,7 +34,7 @@ module GMP
     #   } _mp_algdata;
     # } __gmp_randstate_struct;
     class RandState < FFI::Struct
-      layout :_mp_seed, MpZ,
+      layout :_mp_seed, Z,
              :_mp_alg, :uint8, # unused enum
              :_mp_lc, :pointer # union
     end

@@ -5,7 +5,7 @@ module GMP
     attr_accessor :ptr
     protected :ptr=
     def initialize(f = nil, round = 0)
-      @ptr = Struct::MpFR.new # should be a pointer to __mpfr_struct
+      @ptr = Struct::F.new # should be a pointer to __mpfr_struct
       Mpfr.init(@ptr)
       case f
       when Fixnum

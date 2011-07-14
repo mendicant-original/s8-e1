@@ -7,7 +7,7 @@ module GMP
     attr_accessor :ptr
     protected :ptr=
     def initialize(n = nil, d = nil)
-      @ptr = Struct::MpQ.new # should be a pointer to __mpq_struct
+      @ptr = Struct::Q.new # should be a pointer to __mpq_struct
       Lib.q_init(@ptr)
       if d == nil
         case n
