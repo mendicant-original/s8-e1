@@ -6,12 +6,12 @@ dir = File.dirname(__FILE__)
 gmp_header = "#{dir}/gmp.5.0.1.h"
 header = "#{dir}/mpfr.3.0.0.h" # let's use mpfr as it includes gmp.h
 
-preprocessed = "#{dir}/gmp.preprocessed.h"
+preprocessed_header = "#{dir}/gmp.preprocessed.h"
 
 functions_file = "#{dir}/functions.yml"
 constants_file = "#{dir}/constants.yml"
 
-system 'gcc', '-E', header, '-o', preprocessed unless File.exist? preprocessed
+system 'gcc', '-E', header, '-o', preprocessed_header unless File.exist? preprocessed_header
 
 TYPE = /(?![ ])[ a-z*\[\]_]+/
 NAME = /[a-zA-Z0-9_]+/
@@ -22,12 +22,13 @@ PARAM = /
 /x
 PARAM_SEPARATOR = /\s*,\s*/
 
-PROTOTYPE_REGEXP = /^
+PROTOTYPE_REGEXP = /
   (?: # function type and name
-    (?<type>#{TYPE})\s+(?<name>#{NAME})
+    (?<type>#{TYPE})\s+
     |
-    (?<type>#{TYPE}\*)(?<name>#{NAME})
+    (?<type>#{TYPE}\*)
   )
+  (?<name>#{NAME})
 \s*
   \( # parameters
     (?<params>
@@ -40,8 +41,8 @@ PROTOTYPE_REGEXP = /^
     )
   \)
   (?:[ ]__attribute__[ ]\(\(__pure__\)\))?
-  ;
-$/x
+  ;\s+
+/x
 
 TYPES_MAP = {
   '...' => :varargs,
@@ -92,12 +93,12 @@ def type_for type
   end
 end
 
-lines = File.readlines(preprocessed)
-lines.each(&:strip!)
+preprocessed = File.read(preprocessed_header)
 
 gmp_header_lines = File.readlines(gmp_header)
 
-lines.each { |line|
+preprocessed.lines.each { |line|
+  line.chomp!
   if line.start_with? 'typedef' and line.end_with? ';'
     _, *old_type, new_type = line.split(' ')
     old_type = old_type.join(' ')
@@ -107,9 +108,7 @@ lines.each { |line|
 }
 
 functions = {}
-lines.each { |prototype|
-  next unless prototype.end_with?(');') and prototype =~ PROTOTYPE_REGEXP
-  # puts prototype
+preprocessed.scan(PROTOTYPE_REGEXP) { |*e|
   name, type, params = $~[:name], $~[:type], $~[:params]
 
   functions[name.to_sym] = [

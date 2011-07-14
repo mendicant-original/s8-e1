@@ -1442,6 +1442,9 @@
 :mpfr_get_default_rounding_mode:
 - - :void
 - :uint8
+:mpfr_print_rnd_mode:
+- - :uint8
+- :string
 :mpfr_clear_flags:
 - - :void
 - :void
@@ -1490,6 +1493,11 @@
 :mpfr_erangeflag_p:
 - - :void
 - :int
+:mpfr_check_range:
+- - :pointer
+  - :int
+  - :uint8
+- :int
 :mpfr_init2:
 - - :pointer
   - :long
@@ -1500,6 +1508,18 @@
 :mpfr_clear:
 - - :pointer
 - :void
+:mpfr_prec_round:
+- - :pointer
+  - :long
+  - :uint8
+- :int
+:mpfr_can_round:
+- - :pointer
+  - :long
+  - :uint8
+  - :uint8
+  - :long
+- :int
 :mpfr_min_prec:
 - - :pointer
 - :long
@@ -1537,6 +1557,22 @@
   - :float
   - :uint8
 - :int
+:mpfr_set_ld:
+- - :pointer
+  - :long_double
+  - :uint8
+- :int
+:mpfr_set_z:
+- - :pointer
+  - :pointer
+  - :uint8
+- :int
+:mpfr_set_z_2exp:
+- - :pointer
+  - :pointer
+  - :long
+  - :uint8
+- :int
 :mpfr_set_nan:
 - - :pointer
 - :void
@@ -1548,9 +1584,69 @@
 - - :pointer
   - :int
 - :void
+:mpfr_set_f:
+- - :pointer
+  - :pointer
+  - :uint8
+- :int
+:mpfr_get_f:
+- - :pointer
+  - :pointer
+  - :uint8
+- :int
 :mpfr_set_si:
 - - :pointer
   - :long
+  - :uint8
+- :int
+:mpfr_set_ui:
+- - :pointer
+  - :ulong
+  - :uint8
+- :int
+:mpfr_set_si_2exp:
+- - :pointer
+  - :long
+  - :long
+  - :uint8
+- :int
+:mpfr_set_ui_2exp:
+- - :pointer
+  - :ulong
+  - :long
+  - :uint8
+- :int
+:mpfr_set_q:
+- - :pointer
+  - :pointer
+  - :uint8
+- :int
+:mpfr_set_str:
+- - :pointer
+  - :string
+  - :int
+  - :uint8
+- :int
+:mpfr_init_set_str:
+- - :pointer
+  - :string
+  - :int
+  - :uint8
+- :int
+:mpfr_set4:
+- - :pointer
+  - :pointer
+  - :uint8
+  - :int
+- :int
+:mpfr_abs:
+- - :pointer
+  - :pointer
+  - :uint8
+- :int
+:mpfr_set:
+- - :pointer
+  - :pointer
   - :uint8
 - :int
 :mpfr_neg:
@@ -1560,6 +1656,18 @@
 - :int
 :mpfr_signbit:
 - - :pointer
+- :int
+:mpfr_setsign:
+- - :pointer
+  - :pointer
+  - :int
+  - :uint8
+- :int
+:mpfr_copysign:
+- - :pointer
+  - :pointer
+  - :pointer
+  - :uint8
 - :int
 :mpfr_get_z_2exp:
 - - :pointer
