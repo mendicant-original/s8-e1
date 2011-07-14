@@ -6,6 +6,7 @@ module GMP
     protected :ptr=
     def initialize(f = nil, round = 0)
       @ptr = Struct::F.new # should be a pointer to __mpfr_struct
+      @round = round
       Mpfr.init(@ptr)
       case f
       when Fixnum
@@ -17,6 +18,11 @@ module GMP
       else
         raise ArgumentError, "Unknown initializer: #{n}"
       end
+    end
+
+    private
+    def new
+      F.new.tap { |f| yield(f) }
     end
   end
 end
