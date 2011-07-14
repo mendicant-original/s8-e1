@@ -19,6 +19,10 @@ module GMP
     Q === n ? n : Q.new(n, d)
   end
 
+  def F(f = nil, round = 0)
+    F === f ? f : F.new(f, round)
+  end
+
   def require_recursive
     file = caller.first.partition(':').first
     Dir[File.expand_path("../#{File.basename(file,'.rb')}/*.rb", file)].each { |f| require f }
