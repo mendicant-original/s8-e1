@@ -25,7 +25,7 @@ module GMP
       when NilClass
         Mpfr.set_si(@ptr, 0, round)
       else
-        raise ArgumentError, "Unknown initializer: #{n}"
+        raise ArgumentError, "Unknown initializer: #{f}"
       end
     end
 
