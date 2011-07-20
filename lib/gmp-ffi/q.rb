@@ -4,13 +4,13 @@ require_relative 'lib'
 
 module GMP
   class Q
-    def self.free! ptr
+    def self.free ptr
       # see doc/ffi_finalizer.txt
       Proc.new { Lib.q_clear ptr }
     end
 
     def def_finalizer
-      ObjectSpace.define_finalizer(@ptr, self.class.free!(@ptr.pointer))
+      ObjectSpace.define_finalizer(@ptr, self.class.free(@ptr.pointer))
     end
 
     attr_accessor :ptr
