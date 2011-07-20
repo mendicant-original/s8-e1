@@ -3,7 +3,7 @@ require_relative 'lib'
 module GMP
   class Z
     def self.free! ptr
-      # lambda do not work
+      # see doc/ffi_finalizer.txt
       Proc.new { Lib.z_clear ptr }
     end
 

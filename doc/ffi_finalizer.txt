@@ -1,0 +1,25 @@
+FFI and finalizers
+
+FFI can not free itself all memory, we need to use the appropriate functions to do so.
+However we want to use the Ruby GC, to avoid having to free manually this memory.
+The solution is to use finalizers, with the API
+
+    ObjectSpace.define_finalizer(object.struct, <proc>)
+
+There is however a hidden problem:
+That <proc> can not hold any reference relative to object,
+  or the object won't be garbage collected, since it has a reference !
+
+So the proc must be created outside the object's context.
+A simple way to do this is to use a class method, like so:
+
+    class MyClass
+		  def self.free struct
+	      Proc.new { Lib.struct_free struct }
+	    end
+	  end
+
+And use it with:
+		ObjectSpace.define_finalizer(object.struct, MyClass.free(object.struct))
+
+This is explained in this blog post: http://www.mikeperham.com/2010/02/24/the-trouble-with-ruby-finalizers/

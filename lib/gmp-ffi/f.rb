@@ -3,7 +3,7 @@ require_relative 'mpfr'
 module GMP
   class F
     def self.free! ptr
-      # lambda do not work
+      # see doc/ffi_finalizer.txt
       Proc.new { Mpfr.clear ptr }
     end
 
