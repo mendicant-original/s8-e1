@@ -1,7 +1,7 @@
 module GMP
   class RandState
     def initialize
-      @ptr = Struct::RandState.new
+      @ptr = GMP::Struct::RandState.new
       Lib.randinit_default(@ptr)
     end
 

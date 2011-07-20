@@ -14,10 +14,10 @@ module GMP
     attr_accessor :ptr
     protected :ptr=
     def initialize(n = nil)
-      if Struct::Z === n
+      if GMP::Struct::Z === n
         @ptr = n
       else
-        @ptr = Struct::Z.new # should be a pointer to __mpz_struct
+        @ptr = GMP::Struct::Z.new # should be a pointer to __mpz_struct
         def_finalizer
 
         case n
