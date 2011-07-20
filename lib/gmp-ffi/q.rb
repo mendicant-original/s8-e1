@@ -4,10 +4,20 @@ require_relative 'lib'
 
 module GMP
   class Q
+    def self.free! ptr
+      # see doc/ffi_finalizer.txt
+      Proc.new { Lib.q_clear ptr }
+    end
+
+    def def_finalizer
+      ObjectSpace.define_finalizer(@ptr, self.class.free!(@ptr.pointer))
+    end
+
     attr_accessor :ptr
     protected :ptr=
     def initialize(n = nil, d = nil)
       @ptr = Struct::Q.new # should be a pointer to __mpq_struct
+      def_finalizer
       Lib.q_init(@ptr)
       if d == nil
         case n

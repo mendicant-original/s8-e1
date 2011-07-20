@@ -15,6 +15,7 @@ module GMP
     protected :ptr=
     def initialize(f = nil, round = :RNDN)
       @ptr = Struct::F.new # should be a pointer to __mpfr_struct
+      def_finalizer
       @round = round
       Mpfr.init(@ptr)
       case f

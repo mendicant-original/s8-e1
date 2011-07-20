@@ -6,12 +6,23 @@ def memory
   [Bignum, GMP::Z, GMP::Struct::Z, GMP::Q, GMP::Struct::Q, GMP::F, GMP::Struct::F, FFI::Pointer, FFI::MemoryPointer].each { |c|
     puts "#{c}: #{ObjectSpace.each_object(c) {}}"
   }
+  memory_used
   puts
 end
 
+def memory_used
+  mem = `ps aux | grep #{$0}`.lines.inject(0) { |mem, line|
+    mem + (line.split(/\s+/)[3].to_f / 100 * MEM)
+  }
+  puts "#{mem.round} MB"
+  mem
+end
+
+MEM = system('free &> /dev/null') ? `free -m`.lines.take(2).last.scan(/\d+/).first.to_i : 1792 # MB
+
 memory
 
-z = nil
+z, q, f = nil, nil, nil
 n = 1<<6400
 pi = Math::PI
 r = "#{n}/#{n+1}"
@@ -28,7 +39,10 @@ N.times { |i|
 
 }
 z = nil
+q = nil
+f = nil
 n = nil
+r = nil
 
 memory
 
