@@ -2,7 +2,7 @@ require_relative 'mpfr'
 
 module GMP
   class F
-    def self.free ptr
+    def self.free(ptr)
       # see doc/ffi_finalizer.txt
       Proc.new { Mpfr.clear ptr }
     end

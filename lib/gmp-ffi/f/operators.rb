@@ -1,6 +1,6 @@
 module GMP
   class F
-    def + other, round = @round
+    def +(other, round = @round)
       case other
       when Float
         new { |r| Mpfr.add_d(r.ptr, @ptr, other, round) }
@@ -14,7 +14,7 @@ module GMP
       end
     end
 
-    def - other, round = @round
+    def -(other, round = @round)
       case other
       when Float
         new { |r| Mpfr.sub_d(r.ptr, @ptr, other, round) }
@@ -28,7 +28,7 @@ module GMP
       end
     end
 
-    def * other, round = @round
+    def *(other, round = @round)
       case other
       when Float
         new { |r| Mpfr.mul_d(r.ptr, @ptr, other, round) }
@@ -42,7 +42,7 @@ module GMP
       end
     end
 
-    def / other, round = @round
+    def /(other, round = @round)
       case other
       when Float
         new { |r| Mpfr.div_d(r.ptr, @ptr, other, round) }
