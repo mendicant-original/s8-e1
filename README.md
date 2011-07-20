@@ -9,6 +9,13 @@ Bindings using FFI for the [GMP](http://gmplib.org/) library.
 * compatibility is tried to be kept with the gmp gem
 * faster conversion between GMP::Z and BigNum, if a compiler is available
 
+## Synopsis
+
+    require_relative 'path/to/lib/gmp-ffi'
+    f = GMP::F.new(3.14) # or GMP::F(3.14)
+    f * 2 # => 6.28
+    -f / Math::PI # => -0.9994930426171028
+
 ## What is already done and what is to do
 
 GMP::Z (big integers) and GMP::Q (rationals) are rather functionality-complete.
