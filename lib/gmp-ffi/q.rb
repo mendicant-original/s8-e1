@@ -1,6 +1,9 @@
 require_relative 'lib'
-
-#GC.disable
+require_relative 'q/conversions'
+require_relative 'q/identity'
+require_relative 'q/bits'
+require_relative 'q/operators'
+require_relative 'q/rational'
 
 module GMP
   class Q
@@ -72,9 +75,3 @@ module GMP
     end
   end
 end
-
-require_relative 'q/conversions'
-require_relative 'q/identity'
-require_relative 'q/bits'
-require_relative 'q/operators'
-require_relative 'q/rational'

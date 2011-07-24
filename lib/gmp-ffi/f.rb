@@ -1,4 +1,8 @@
 require_relative 'mpfr'
+require_relative 'f/conversions'
+require_relative 'f/identity'
+require_relative 'f/bits'
+require_relative 'f/operators'
 
 module GMP
   class F
@@ -32,8 +36,3 @@ module GMP
     end
   end
 end
-
-require_relative 'f/conversions'
-require_relative 'f/identity'
-require_relative 'f/bits'
-require_relative 'f/operators'

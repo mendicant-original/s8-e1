@@ -1,4 +1,12 @@
 require_relative 'lib'
+require_relative 'z/conversions'
+require_relative 'z/identity'
+require_relative 'z/bits'
+require_relative 'z/operators'
+require_relative 'z/predicates'
+require_relative 'z/class'
+require_relative 'z/gmp'
+require_relative 'z/others'
 
 module GMP
   class Z
@@ -43,12 +51,3 @@ module GMP
     end
   end
 end
-
-require_relative 'z/conversions'
-require_relative 'z/identity'
-require_relative 'z/bits'
-require_relative 'z/operators'
-require_relative 'z/predicates'
-require_relative 'z/class'
-require_relative 'z/gmp'
-require_relative 'z/others'
