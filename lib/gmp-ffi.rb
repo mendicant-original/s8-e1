@@ -22,11 +22,14 @@ module GMP
   def F(f = nil, round = :RNDN)
     F === f ? f : F.new(f, round)
   end
-
-  def require_recursive
-    file = caller.first.partition(':').first
-    Dir[File.expand_path("../#{File.basename(file,'.rb')}/*.rb", file)].each { |f| require f }
-  end
 end
 
-GMP.require_recursive
+require_relative 'gmp-ffi/struct'
+require_relative 'gmp-ffi/lib'
+require_relative 'gmp-ffi/mpfr'
+require_relative 'gmp-ffi/z'
+require_relative 'gmp-ffi/q'
+require_relative 'gmp-ffi/f'
+require_relative 'gmp-ffi/rand_state'
+require_relative 'gmp-ffi/compatibility'
+require_relative 'gmp-ffi/takeover'

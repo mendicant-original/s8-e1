@@ -33,4 +33,7 @@ module GMP
   end
 end
 
-GMP.require_recursive
+require_relative 'f/conversions'
+require_relative 'f/identity'
+require_relative 'f/bits'
+require_relative 'f/operators'
