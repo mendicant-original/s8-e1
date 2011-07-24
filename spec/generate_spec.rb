@@ -29,7 +29,7 @@ describe 'generate' do
 
   Examples.each_pair { |name, types|
     it name do
-      Lib::Functions[name].should == types
+      GMP::Lib::Functions[name].should == types
     end
   }
 end
