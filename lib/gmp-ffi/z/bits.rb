@@ -5,31 +5,31 @@ module GMP
     end
 
     def -@
-      new { |z| Lib.z_neg(z.ptr, @ptr) }
+      Z.new { |z| Lib.z_neg(z.ptr, @ptr) }
     end
 
     def ~
-      new { |z| Lib.z_com(z.ptr, @ptr) }
+      Z.new { |z| Lib.z_com(z.ptr, @ptr) }
     end
 
     def & other
-      new { |z| Lib.z_and(z.ptr, @ptr, GMP::Z(other).ptr) }
+      Z.new { |z| Lib.z_and(z.ptr, @ptr, GMP::Z(other).ptr) }
     end
 
     def | other
-      new { |z| Lib.z_ior(z.ptr, @ptr, GMP::Z(other).ptr) }
+      Z.new { |z| Lib.z_ior(z.ptr, @ptr, GMP::Z(other).ptr) }
     end
 
     def ^ other
-      new { |z| Lib.z_xor(z.ptr, @ptr, GMP::Z(other).ptr) }
+      Z.new { |z| Lib.z_xor(z.ptr, @ptr, GMP::Z(other).ptr) }
     end
 
     def << i
-      new { |z| Lib.z_mul_2exp(z.ptr, @ptr, i.to_i) }
+      Z.new { |z| Lib.z_mul_2exp(z.ptr, @ptr, i.to_i) }
     end
 
     def >> i
-      new { |z| Lib.z_fdiv_q_2exp(z.ptr, @ptr, i.to_i) }
+      Z.new { |z| Lib.z_fdiv_q_2exp(z.ptr, @ptr, i.to_i) }
     end
 
     def [](i)
@@ -58,7 +58,7 @@ module GMP
     end
 
     def abs
-      new { |z| Lib.z_abs(z.ptr, @ptr) }
+      Z.new { |z| Lib.z_abs(z.ptr, @ptr) }
     end
 
     def abs!

@@ -51,6 +51,7 @@ module GMP
           raise ArgumentError, "Unknown initializer: (#{n},#{d})"
         end
       end
+      yield self if block_given?
     end
 
     def numerator
@@ -68,10 +69,6 @@ module GMP
 
     def denominator_ptr
       @ptr[:_mp_den]
-    end
-
-    def new
-      Q.new.tap { |q| yield(q) }
     end
   end
 end

@@ -5,7 +5,7 @@ module GMP
     end
 
     def powmod(exp, mod)
-      new { |r|
+      Z.new { |r|
         case exp
         when Fixnum
           Lib.z_powm_ui(r.ptr, @ptr, exp, GMP::Z(mod).ptr)
@@ -16,27 +16,27 @@ module GMP
     end
 
     def next_prime
-      new { |z| Lib.z_nextprime(z.ptr, @ptr) }
+      Z.new { |z| Lib.z_nextprime(z.ptr, @ptr) }
     end
 
     def invert mod
-      new { |z|
+      Z.new { |z|
         Lib.z_invert(z.ptr, @ptr, mod.ptr)
       }
     end
 
     def remove factor
       n = nil
-      z = new { |r| n = Lib.z_remove(r.ptr, @ptr, GMP::Z(factor).ptr) }
+      z = Z.new { |r| n = Lib.z_remove(r.ptr, @ptr, GMP::Z(factor).ptr) }
       [z, n]
     end
 
     def divexact other
-      new { |z| Lib.z_divexact(z.ptr, @ptr, GMP::Z(other).ptr) }
+      Z.new { |z| Lib.z_divexact(z.ptr, @ptr, GMP::Z(other).ptr) }
     end
 
     def addmul a, b
-      new { |z| Lib.z_addmul(z.ptr, GMP::Z(a).ptr, GMP::Z(b).ptr) }
+      Z.new { |z| Lib.z_addmul(z.ptr, GMP::Z(a).ptr, GMP::Z(b).ptr) }
     end
 
     def addmul! a, b
@@ -45,7 +45,7 @@ module GMP
     end
 
     def submul a, b
-      new { |z| Lib.z_submul(z.ptr, GMP::Z(a).ptr, GMP::Z(b).ptr) }
+      Z.new { |z| Lib.z_submul(z.ptr, GMP::Z(a).ptr, GMP::Z(b).ptr) }
     end
 
     def submul! a, b

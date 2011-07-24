@@ -28,11 +28,7 @@ module GMP
       else
         raise ArgumentError, "Unknown initializer: #{f}"
       end
-    end
-
-    private
-    def new
-      F.new.tap { |f| yield(f) }
+      yield self if block_given?
     end
   end
 end

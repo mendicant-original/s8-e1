@@ -34,16 +34,12 @@ module GMP
           raise ArgumentError, "Unknown initializer: #{n}"
         end
       end
+      yield self if block_given?
     end
 
     def set z
       @ptr = z.ptr
       self
-    end
-
-    private
-    def new
-      Z.new.tap { |z| yield(z) }
     end
   end
 end

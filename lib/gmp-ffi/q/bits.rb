@@ -5,7 +5,7 @@ module GMP
     end
 
     def -@
-      new { |q| Lib.q_neg(q.ptr, @ptr) }
+      Q.new { |q| Lib.q_neg(q.ptr, @ptr) }
     end
 
     def neg!
@@ -14,7 +14,7 @@ module GMP
     end
 
     def abs
-      new { |q| Lib.q_abs(q.ptr, @ptr) }
+      Q.new { |q| Lib.q_abs(q.ptr, @ptr) }
     end
 
     def abs!

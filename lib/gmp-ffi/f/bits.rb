@@ -5,11 +5,11 @@ module GMP
     end
 
     def -@
-      new { |f| Mpfr.neg(f.ptr, @ptr, @round) }
+      F.new { |f| Mpfr.neg(f.ptr, @ptr, @round) }
     end
 
     def abs
-      new { |f| Mpfr.abs(f.ptr, @ptr, @round) }
+      F.new { |f| Mpfr.abs(f.ptr, @ptr, @round) }
     end
   end
 end
