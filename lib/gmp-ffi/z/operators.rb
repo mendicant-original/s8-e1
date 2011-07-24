@@ -54,8 +54,8 @@ module GMP
       end
     end
 
-    PowerModulo = Z.new(1<<128)
     def ** exp
+      @@power_modulo ||= Z.new(1<<128)
       Z.new { |r|
         case exp
         when Fixnum
@@ -65,7 +65,7 @@ module GMP
         when Bignum
           self ** Z.new(other)
         when Z
-          Lib.z_powm(r.ptr, @ptr, exp.ptr, PowerModulo.ptr) # FIXME
+          Lib.z_powm(r.ptr, @ptr, exp.ptr, @@power_modulo.ptr) # FIXME
         end
       }
     end
