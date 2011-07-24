@@ -20,5 +20,10 @@ Bindings using FFI for the [GMP](http://gmplib.org/) library.
 
 GMP::Z (big integers) and GMP::Q (rationals) are rather functionality-complete.
 
-GMP::F (floats) are not yet implemented.
+GMP::F (floats) are being implemented.
 They are more difficult to implement, as they are implemented in both GMP (limited) and MPFR.
+
+## Project structure
+
+The project structure is a bit unusual: methods for the 3 numeric types (Z, Q and F) are split by concept.
+This makes easier to find/add a method and avoid having one big file.
