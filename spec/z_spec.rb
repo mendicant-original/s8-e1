@@ -4,17 +4,17 @@ describe GMP::Z do
   two = GMP::Z 2
   three = GMP::Z 3
 
-  it 'new, GMP::Z()' do
+  implements 'new, GMP::Z()' do
     GMP::Z(two).ptr.should == two.ptr
     GMP::Z.new(two).ptr.should_not == two.ptr
   end
 
-  it 'initialize' do
+  implements 'initialize' do
     GMP::Z.new.should == 0
     two.should == 2
   end
 
-  it 'dup' do
+  implements 'dup' do
     z = two.dup
     z.ptr.should_not == two.ptr
     z[0] = 1
@@ -22,7 +22,7 @@ describe GMP::Z do
     two.should == 2
   end
 
-  it '==' do
+  implements '==' do
     two.should == 2
     2.should == two
     two.should == two
@@ -32,7 +32,7 @@ describe GMP::Z do
     two.should_not == three
   end
 
-  it '<=>' do
+  implements '<=>' do
     two.should be < three
     two.should be <= three
     three.should be >= two
@@ -41,19 +41,19 @@ describe GMP::Z do
     two.should be <= two
   end
 
-  it '+@' do
+  implements '+@' do
     (+two).should == two
     (+two).should == 2
   end
 
-  it '-@' do
+  implements '-@' do
     (-two).should == -2
     (-two).should == two*-1
     (-(-two)).should == 2
     (-(-two)).should == two
   end
 
-  it '+' do
+  implements '+' do
     (two+three).should == 5
     (two-three).should == -1
 
@@ -64,7 +64,7 @@ describe GMP::Z do
     (2-three).should == -1
   end
 
-  it '*' do
+  implements '*' do
     (two*three).should == 6
 
     (two*3).should == 6
@@ -72,7 +72,7 @@ describe GMP::Z do
     (2*three).should == 6
   end
 
-  it 'factorial' do
+  implements 'factorial' do
     GMP::Z.factorial(0).should == 1
     GMP::Z.factorial(1).should == 1
     GMP::Z.factorial(2).should == 2
@@ -81,12 +81,12 @@ describe GMP::Z do
     GMP::Z.factorial(30).should == 265252859812191058636308480000000
   end
 
-  it 'to_s' do
+  implements 'to_s' do
     two.to_s.should == '2'
     GMP::Z(12345678909876543210).to_s.should == '12345678909876543210'
   end
 
-  it 'lcm' do
+  implements 'lcm' do
     three.lcm(two).should == 6
     two.lcm(two).should == two
     three.lcm(three).should == three

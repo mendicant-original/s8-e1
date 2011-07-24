@@ -1,6 +1,6 @@
 require_relative 'spec_helper'
 
-describe 'generate' do
+describe 'Lib#generate' do
   Examples = {
     :__gmpz_init          => [[:pointer], :void],
     :__gmpz_init_set_si   => [[:pointer, :long], :void],
@@ -28,7 +28,7 @@ describe 'generate' do
   }
 
   Examples.each_pair { |name, types|
-    it name do
+    it "finds correct types for #{name}" do
       GMP::Lib::Functions[name].should == types
     end
   }
