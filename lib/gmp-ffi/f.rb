@@ -28,6 +28,7 @@ module GMP
       when Float
         Mpfr.set_d(@ptr, f, round)
       when NilClass
+        # Initialize to 0, instead of NaN by default, like GMP::Z and GMP::Q
         Mpfr.set_si(@ptr, 0, round)
       else
         raise ArgumentError, "Unknown initializer: #{f}"
