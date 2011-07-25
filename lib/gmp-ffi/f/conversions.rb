@@ -1,6 +1,6 @@
 module GMP
   class F
-    def coerce other
+    def coerce(other)
       [GMP::F(other), self]
     end
 

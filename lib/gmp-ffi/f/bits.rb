@@ -16,7 +16,7 @@ module GMP
       Mpfr.get_prec(@ptr)
     end
 
-    def prec= precision
+    def prec=(precision)
       Mpfr.set_prec(@ptr, precision)
     end
   end

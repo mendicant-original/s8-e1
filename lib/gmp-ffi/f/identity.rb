@@ -2,7 +2,7 @@ module GMP
   class F
     include Comparable
 
-    def == other
+    def ==(other)
       case other
       when Float
         Mpfr.cmp_d(@ptr, other) == 0
@@ -11,7 +11,7 @@ module GMP
       end
     end
 
-    def <=> other
+    def <=>(other)
       case other
       when Fixnum
         GMP.sign Mpfr.cmp_si(@ptr, other)
