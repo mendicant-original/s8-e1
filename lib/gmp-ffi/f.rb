@@ -17,11 +17,11 @@ module GMP
 
     attr_accessor :ptr
     protected :ptr=
-    def initialize(f = nil, round = :RNDN)
+    def initialize(f = nil, precision = nil, round = :RNDN)
       @ptr = GMP::Struct::F.new # should be a pointer to __mpfr_struct
       def_finalizer
       @round = round
-      Mpfr.init(@ptr)
+      precision ? Mpfr.init2(@ptr, precision) : Mpfr.init(@ptr)
       case f
       when Fixnum
         Mpfr.set_si(@ptr, f, round)

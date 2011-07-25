@@ -64,4 +64,10 @@ describe GMP::F do
     two.abs.should == 2
     (-two).abs.should == 2
   end
+
+  implements 'prec and prec=' do
+    f = GMP::F(1)
+    f.prec = 42
+    f.prec.should == 42
+  end
 end
