@@ -58,6 +58,14 @@ describe GMP::F do
     GMP::F(0.25).to_s.should == '0.25'
     GMP::F(0.0025).to_s.should == '0.0025'
     GMP::F(25.024).to_s.should == '25.024'
+    GMP::F(10000000).to_s.should == '10000000'
+    (1/GMP::F(10000000)).to_s.should == '0.0000001'
+    GMP::F(Math::PI).to_s.should == '3.14159265358979'
+    GMP::F(Math::PI).to_s(16).should == Math::PI.to_s
+
+    (GMP::F(0)/0).to_s.should == 'NaN'
+    (GMP::F(1)/0).to_s.should == 'Infinity'
+    (GMP::F(-1)/0).to_s.should == '-Infinity'
   end
 
   implements 'abs' do
